@@ -26,14 +26,7 @@ function TaskItem({
       ></input>
       <span class='checkmark'></span>
       <div className='title'>
-        <h3 id={task._id}>
-          {'ticket:' +
-            task.ticket +
-            ' index: ' +
-            taskIndex +
-            ' - ' +
-            task.title}
-        </h3>
+        <h3 id={task._id}>{task.ticket + ' - ' + task.title}</h3>
         {task.category != [] ? (
           <p>
             <b>Category:</b> {task.category}
