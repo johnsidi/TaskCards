@@ -17,18 +17,30 @@ function Sidebar({ tasks, propertyFilterHandler }) {
     'Have Start Date': (task) => task.startDate != '',
     'Have Due Date': (task) => task.dueDate != '',
 
-    automation: (task) => task.category === 'automation',
-    DIY: (task) => task.category === 'DIY',
-    internet: (task) => task.category === 'internt',
-    JavaScript: (task) => task.category === 'JavaScript',
-    'job hunting': (task) => task.category === 'job hunting',
-    London: (task) => task.category === 'London',
-    people: (task) => task.category === 'people',
-    programming: (task) => task.category === 'programming',
-    shopping: (task) => task.category === 'shopping',
-    TaskCards: (task) => task.category === 'TaskCards',
-    writing: (task) => task.category === 'writng',
+    // automation: (task) => task.category === 'automation',
+    // DIY: (task) => task.category === 'DIY',
+    // internet: (task) => task.category === 'internt',
+    // JavaScript: (task) => task.category === 'JavaScript',
+    // 'job hunting': (task) => task.category === 'job hunting',
+    // London: (task) => task.category === 'London',
+    // people: (task) => task.category === 'people',
+    // programming: (task) => task.category === 'programming',
+    // shopping: (task) => task.category === 'shopping',
+    // TaskCards: (task) => task.category === 'TaskCards',
+    // writing: (task) => task.category === 'writng',
   };
+
+  const taskCategories = new Set();
+  
+  tasks.forEach((task) => {
+    taskCategories.add(task.category);
+  });
+  taskCategories.forEach(
+    (taskCategory) =>
+      (FILTER_MAP[
+        taskCategory
+      ] = task => task.category === taskCategory)
+  );
 
   const FILTER_NAMES = Object.keys(FILTER_MAP);
   const filterList = FILTER_NAMES.map((name) => (
@@ -45,7 +57,7 @@ function Sidebar({ tasks, propertyFilterHandler }) {
       <button className='hamburger' type='button' onClick={showSidebar}>
         <div></div>
       </button>
-      Filters
+      <h2>Filters</h2>
       <div className='sidebarItems'>{filterList}</div>
     </nav>
   );
