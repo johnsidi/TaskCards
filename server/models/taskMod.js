@@ -1,6 +1,7 @@
-const { Schema, model } = require('mongoose');
+const mongoose = require('mongoose');
+const AutoIncrement = require('mongoose-sequence')(mongoose);
 
-const taskSchema = new Schema(
+const taskSchema = new mongoose.Schema(
   {
     title: {
       type: String,
@@ -38,4 +39,6 @@ const taskSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = model('Task', taskSchema);
+taskSchema.plugin(AutoIncrement, { inc_field: 'ticket' });
+
+module.exports = mongoose.model('Task', taskSchema);
