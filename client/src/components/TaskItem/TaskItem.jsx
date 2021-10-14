@@ -4,8 +4,8 @@ import React from 'react';
 function TaskItem({ task }) {
   return (
     <div className='taskContent'>
+      <input type='checkbox' id={task._id} className='printCheckbox'></input>
       <div className='title'>
-        <input type='checkbox' id={task._id} className='printCheckbox'></input>
         <h3>{task.title}</h3>
       </div>
     </div>

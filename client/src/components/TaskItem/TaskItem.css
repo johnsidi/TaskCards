@@ -1,0 +1,11 @@
+.printCheckBox {
+  display: inline-block;
+  margin: auto;
+}
+.taskContent {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+}
