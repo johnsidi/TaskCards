@@ -125,7 +125,19 @@ function CreateIndexCard({ tasks, cardSize }) {
                 - [ ] it is better to become optional in the future
                 it is better not to delete any task in order for the ID to be unique */}
                 {/* {'ID: ' + */}
-                {atask.ticket.toString() + ' - ' + atask.title + '\n\n'}
+                {atask.ticket.toString() +
+                  ' ' +
+                  //' #' +
+                  // atask.category +
+                  // ' - ' +
+                  atask.title +
+                  '\n\n'}
+              </Text>
+              <Text key={atask._id} style={styles.label}>
+                Category:
+                <Text key={atask._id} style={styles.body}>
+                  {' ' + atask.category}
+                </Text>
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Start date:
