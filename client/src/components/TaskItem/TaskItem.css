@@ -104,3 +104,7 @@ h3 {
   background-color: #000;
   opacity: 0.75;
 }
+
+.taskContent .doneCheckbox:checked ~ .title {
+  text-decoration: line-through;
+}

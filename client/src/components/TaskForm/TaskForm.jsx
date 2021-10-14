@@ -6,13 +6,20 @@ function TaskForm({ createHandler }) {
     title: '',
     startDate: '',
     dueDate: '',
+    completed: false,
     completionDate: '',
   });
 
   const submitHandler = async (e) => {
     e.preventDefault();
     await createHandler(task);
-    setTask({ title: '', startDate: '', dueDate: '', completionDate: '' });
+    setTask({
+      title: '',
+      startDate: '',
+      dueDate: '',
+      completionDate: '',
+      completed: false,
+    });
   };
 
   return (

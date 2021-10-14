@@ -3,7 +3,7 @@ import React from 'react';
 
 import './TaskList.css';
 
-function TaskList({ tasks, deleteHandler, editHandler }) {
+function TaskList({ tasks, deleteHandler, editHandler, completeTaskHandler }) {
   //without the return it does not work!
   //const sortedTasks = tasks.sort((a, b) => {return new Date(b.createdAt) - new Date(a.createdAt); });
   const sortedTasks = tasks.sort((a, b) => {
@@ -13,7 +13,13 @@ function TaskList({ tasks, deleteHandler, editHandler }) {
   //console.log('sortedTasks', sortedTasks);
 
   return sortedTasks.map((task) => (
-    <TaskItem key={task._id} task={task} editHandler={editHandler} deleteHandler={deleteHandler} />
+    <TaskItem
+      key={task._id}
+      task={task}
+      editHandler={editHandler}
+      deleteHandler={deleteHandler}
+      completeTaskHandler={completeTaskHandler}
+    />
   ));
 }
 

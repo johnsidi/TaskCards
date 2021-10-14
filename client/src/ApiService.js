@@ -33,11 +33,11 @@ const deleteTask = async (id) => {
   });
 };
 
-const updateTask = async (id, taskMetadata) => {
+const updateTask = async (id, updatedTask) => {
   try {
     const res = await fetch(`${BASE_URL}/${id}`, {
       method: 'PUT',
-      body: JSON.stringify(taskMetadata),
+      body: JSON.stringify(updatedTask),
       headers: { 'Content-Type': 'application/json' },
     });
     return res.json();
@@ -46,5 +46,6 @@ const updateTask = async (id, taskMetadata) => {
     return null;
   }
 };
+
 
 export default { getTasks, createTask, deleteTask, updateTask };

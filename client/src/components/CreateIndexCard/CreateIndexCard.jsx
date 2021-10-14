@@ -20,13 +20,13 @@ import {
 import { useState } from 'react';
 
 function CreateIndexCard({ tasks, cardSize }) {
-  console.log('cardSize', cardSize);
+  // console.log('cardSize', cardSize);
   let passedSize = null;
   // let passedSize = [216, 360];
   cardSize === 'A4' || cardSize === 'A7'
     ? (passedSize = cardSize)
     : (passedSize = cardSize.split(' '));
-  console.log('passSize', passedSize);
+  // console.log('passSize', passedSize);
   const [tasksForPrinting, setTasksForPrinting] = useState([
     {
       title:

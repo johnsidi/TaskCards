@@ -12,6 +12,7 @@ function Dashboard({ searchString }) {
 
   async function fetchTasks() {
     const tasksList = await ApiService.getTasks();
+    console.log('TaskList', tasksList);
     setTasks(tasksList);
   }
 
@@ -31,24 +32,69 @@ function Dashboard({ searchString }) {
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
-  const editHandler = async (id, editedTask) => {
-    const task = await ApiService.updateTask(id, editedTask);
-
-    const editedTaskList = tasks.map((task) => {
-      // if this task has the same ID as the edited task
+  const completeTaskHandler = async (id, comTask) => {
+    let completedTask = {};
+    if (comTask.completed === false) {
+      completedTask = {
+        ...comTask,
+        completed: true,
+        completionDate: new Date(),
+      };
+    } else {
+      completedTask = {
+        ...comTask,
+        completed: false,
+        completionDate: '',
+      };
+    }
+    const withCreatedTasks = tasks.map((task) => {
       if (id === task._id) {
-        //
+        console.log('com date', completedTask.completionDate);
         return {
-          title: editedTask.title,
-          startDate: editedTask.startDate,
-          dueDate: editedTask.dueDate,
-          completionDate: editedTask.completionDate,
+          ...task,
+          completed: completedTask.completed,
+          completionDate: completedTask.completionDate,
         };
       }
       return task;
     });
-    console.log('editedTaskList', editedTaskList);
-    setTasks(editedTaskList);
+    // console.log('1');
+    // console.log('id', id);
+
+    // const withCreatedTasks = tasks.map((task) => {
+    //   console.log(2);
+    //   // console.log('task.id', task._id);
+    //   if (id === task._id) {
+    //     // console.log('passed task', task);
+    //     console.log('com date', comTask.completionDate);
+    //     console.log('complted', comTask.completed);
+    //     return {
+    //       ...task,
+    //       completed: !comTask.completed,
+    //       completionDate: comTask.completionDate,
+    //     };
+    //   }
+    //   return task;
+    // });
+
+    await ApiService.updateTask(id, completedTask);
+    setTasks(withCreatedTasks);
+  };
+  const editHandler = async (id, editedTask) => {
+    const task = await ApiService.updateTask(id, editedTask);
+
+    const withEditedTasks = tasks.map((task) => {
+      if (id === task._id) {
+        return {
+          ...task,
+          title: editedTask.title,
+          startDate: editedTask.startDate,
+          dueDate: editedTask.dueDate,
+        };
+      }
+      return task;
+    });
+    setTasks(withEditedTasks);
   };
 
   useEffect(() => {
@@ -70,7 +116,9 @@ function Dashboard({ searchString }) {
           <TaskList
             id='list'
             tasks={filteredTasks}
+            editHandler={editHandler}
             deleteHandler={deleteHandler}
+            completeTaskHandler={completeTaskHandler}
           />
         ) : (
           <TaskList
@@ -78,6 +126,7 @@ function Dashboard({ searchString }) {
             tasks={tasks}
             editHandler={editHandler}
             deleteHandler={deleteHandler}
+            completeTaskHandler={completeTaskHandler}
           />
         )}
       </div>

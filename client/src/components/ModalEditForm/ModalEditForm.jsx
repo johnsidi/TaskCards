@@ -17,7 +17,6 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
       title: editedTask.title,
       startDate: editedTask.startDate,
       dueDate: editedTask.dueDate,
-      completionDate: editedTask.completionDate,
     });
   };
 
