@@ -33,6 +33,7 @@ function CreateIndexCard({ tasks, cardSize }) {
         'select one or more tasks for printing and click on "Print Selected Tasks"',
       startDate: '',
       dueDate: '',
+      ticket: 'ticket number',
     },
   ]);
 
@@ -124,10 +125,7 @@ function CreateIndexCard({ tasks, cardSize }) {
                 - [ ] it is better to become optional in the future
                 it is better not to delete any task in order for the ID to be unique */}
                 {/* {'ID: ' + */}
-                {(tasks.length - tasks.indexOf(atask)).toString() +
-                  ' - ' +
-                  atask.title +
-                  '\n\n'}
+                {atask.ticket.toString() + ' - ' + atask.title + '\n\n'}
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Start date:
