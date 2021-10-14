@@ -1,19 +1,19 @@
 import './TaskItem.css';
+import moment from 'moment';
 import React from 'react';
 
 function TaskItem({ task, deleteHandler }) {
   return (
     <div className='taskContent'>
       <label class='buttonContainer'>
-        
         <input type='checkbox' id={task._id} className='printCheckbox'></input>
         <span class='checkmark'></span>
       </label>
       <div className='title'>
-        <h3 id={task._id}>{task.title}</h3>
-        <p>Start date: {task.startDate}</p>
-        <p>Due date: {task.startDate}</p>
-        <p>Creation date: {task.startDate}</p>
+        <h2 id={task._id}>{task.title}</h2>
+        <p>Creation date: {moment(task.createdAt).format('YYYY-MM-DD')}</p>
+        {task.dueDate ? <p>Due date: {task.dueDate} </p> : ''}
+        {task.startDate ? <p>Start date: {task.startDate}</p>: ''}
       </div>
       <div className='taskDelete'>
         <button

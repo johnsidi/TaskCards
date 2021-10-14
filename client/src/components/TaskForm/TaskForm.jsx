@@ -2,15 +2,18 @@ import './TaskForm.css';
 import React, { useState } from 'react';
 
 function TaskForm({ createHandler }) {
-  const [task, setTask] = useState({ title: '', startDate: '' });
+  const [task, setTask] = useState({
+    title: '',
+    startDate: '',
+    dueDate: '',
+    completionDate: '',
+  });
 
   const submitHandler = async (e) => {
     e.preventDefault();
     await createHandler(task);
-    setTask({ title: '', startDate: '' });
+    setTask({ title: '', startDate: '', dueDate: '', completionDate: '' });
   };
-
-  console.log('task', task);
 
   return (
     <div className='form'>

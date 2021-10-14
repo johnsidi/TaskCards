@@ -4,7 +4,6 @@ import moment from 'moment';
 import {
   Page,
   Text,
-  View,
   PDFViewer,
   Document,
   StyleSheet,
@@ -63,7 +62,7 @@ function IndexCard3by5({ tasks }) {
 
   return (
     <div className='indexCard'>
-      <PDFViewer showToolbar='true' width='500' height='400'>
+      <PDFViewer showToolbar='true' width='500' height='350'>
         <Document>
           {tasksForPrinting.map((atask) => (
             <Page
