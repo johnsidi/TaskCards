@@ -8,6 +8,7 @@
   flex: 7;
   padding: 1rem;
   overflow-y: scroll;
+  min-width: 500px;
 }
 
 .form {
