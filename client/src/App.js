@@ -25,6 +25,7 @@ function App() {
             type='text'
             placeholder='Search...'
             accessKey='f'
+            title='ctrl + alt + f'
           ></input>
         </div>
       </header>

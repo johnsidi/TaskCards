@@ -147,6 +147,7 @@ function CreateIndexCard({ tasks, cardSize }) {
       <button
         type='button'
         accessKey='p'
+        title='ctrl + alt + p'
         className='button-print'
         onClick={checkBoxPicks}
       >
