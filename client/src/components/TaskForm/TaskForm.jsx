@@ -39,6 +39,16 @@ function TaskForm({ createHandler }) {
           title='ctrl + alt + n'
         />
         <br />
+        <label>Tags</label>
+        <input
+          className='input-form'
+          onChange={(e) => {
+            setTask({ ...task, dueDate: e.target.value });
+          }}
+          value={task.dueDate}
+          type='date'
+        />
+        <br />
 
         <label>Start Date</label>
         <input
@@ -61,6 +71,7 @@ function TaskForm({ createHandler }) {
           type='date'
         />
         <br />
+        
 
         <button
           className='button-form'

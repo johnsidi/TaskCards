@@ -13,7 +13,7 @@ function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
 
     Completed: (task) => task.completed,
     AlreadyStarted: (task) =>
-      task.startDate < Date.now() && task.startDate != '',
+      Date.parse(task.startDate) < Date.now() && task.startDate != '',
     'Have Start Date': (task) => task.startDate != '',
     'Have Due Date': (task) => task.dueDate != '',
   };
