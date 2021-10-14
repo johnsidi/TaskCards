@@ -54,9 +54,12 @@ function IndexCard3by5({ tasks }) {
       fontsize: 12,
       color: 'grey',
       fontFamily: 'Helvetica',
+      margin: 10,
+      color: 'darkorange',
     },
     label: {
-      fontsize: 12,
+      fontsize: 10,
+      margin: 10,
     },
   });
 
@@ -66,7 +69,7 @@ function IndexCard3by5({ tasks }) {
         <Document>
           {tasksForPrinting.map((atask) => (
             <Page
-              style={{ margin: 5, justifyContent: 'space-around' }}
+              style={{ justifyContent: 'space-between' }}
               key={atask._id}
               size='A7'
               orientation='landscape'
@@ -83,6 +86,7 @@ function IndexCard3by5({ tasks }) {
                   {' ' + atask.startDate}
                 </Text>
               </Text>
+
               <Text key={atask._id} style={styles.label}>
                 Due date:
                 <Text key={atask._id} style={styles.body}>

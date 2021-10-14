@@ -11,9 +11,23 @@ function TaskItem({ task, deleteHandler }) {
       </label>
       <div className='title'>
         <h2 id={task._id}>{task.title}</h2>
-        <p>Creation date: {moment(task.createdAt).format('YYYY-MM-DD')}</p>
-        {task.dueDate ? <p>Due date: {task.dueDate} </p> : ''}
-        {task.startDate ? <p>Start date: {task.startDate}</p>: ''}
+        <p>
+          <b>Creation date:</b> {moment(task.createdAt).format('YYYY-MM-DD')}
+        </p>
+        {task.dueDate ? (
+          <p>
+            <b>Due date:</b> {task.dueDate}{' '}
+          </p>
+        ) : (
+          ''
+        )}
+        {task.startDate ? (
+          <p>
+            <b>Start date:</b> {task.startDate}
+          </p>
+        ) : (
+          ''
+        )}
       </div>
       <div className='taskDelete'>
         <button

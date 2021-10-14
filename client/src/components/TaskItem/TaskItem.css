@@ -20,12 +20,15 @@
 }
 .taskContent {
   align-items: center;
-
   display: flex;
   flex-direction: row;
   gap: 1rem;
   padding: 0.5rem;
   border-top: 1px solid black;
+}
+
+h2 {
+  color: darkorange;
 }
 
 /* .taskContent::first-of-type {
