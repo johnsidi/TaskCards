@@ -22,9 +22,12 @@ header {
 }
 
 footer {
+  /* display: sticky; */
   padding: 2rem;
   background-color: orange;
   font-size: 18px;
+  max-height: 100px;
+  min-height: 50px;
 }
 
 .navbar_search {

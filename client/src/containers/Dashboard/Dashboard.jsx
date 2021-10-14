@@ -41,7 +41,10 @@ function Dashboard({ searchString }) {
   return (
     <div className='dashboard'>
       <div className='tasks'>
-        <div className='totalTasks'>Total tasks: {tasks.length}</div>
+        <div className='totalTasks'>
+          Total tasks:{' '}
+          {tasks.length && searchString ? filteredTasks.length : tasks.length}
+        </div>
 
         {tasks.length && searchString ? (
           <TaskList
