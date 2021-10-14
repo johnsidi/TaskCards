@@ -24,10 +24,11 @@
   padding: 0.5rem;
 }
 .button-print {
+  font-size: 14;
   position: relative;
   left: 7rem;
   width: 55%;
-  height: 2rem;
+  height: 3rem;
   margin-left: 0rem auto;
   padding: 0.2rem;
   border-radius: 5px;

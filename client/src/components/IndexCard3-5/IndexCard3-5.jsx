@@ -15,7 +15,8 @@ function IndexCard3by5({ tasks }) {
 
   const [tasksForPrinting, setTasksForPrinting] = useState([
     {
-      title: 'select one or more tasks for printing and click on the button',
+      title:
+        'select one or more tasks for printing and click on "Print Selected Tasks"',
       startDate: '',
       dueDate: '',
     },
@@ -51,28 +52,29 @@ function IndexCard3by5({ tasks }) {
 
   const styles = StyleSheet.create({
     body: {
-      fontsize: 12,
+      fontsize: 6,
       color: 'grey',
       fontFamily: 'Helvetica',
-      margin: 10,
+      margin: 0,
       color: 'darkorange',
     },
     label: {
-      fontsize: 10,
+      fontsize: 5,
       margin: 10,
     },
   });
 
   return (
     <div className='indexCard'>
-      <PDFViewer showToolbar='true' width='500' height='350'>
+      <PDFViewer showToolbar='true' width='500' height='370'>
         <Document>
           {tasksForPrinting.map((atask) => (
             <Page
               style={{ justifyContent: 'space-between' }}
               key={atask._id}
               //a 3*5 index card in points
-              size={[216, 360]}
+              // size={[320, 360]}
+              size='A7' //better for printing
               orientation='landscape'
             >
               <Text key={atask._id} style={styles.label}>
@@ -105,7 +107,7 @@ function IndexCard3by5({ tasks }) {
         </Document>
       </PDFViewer>
       <button type='button' className='button-print' onClick={checkBoxPicks}>
-        Print selected tasks
+        Print Selected Tasks
       </button>
     </div>
   );

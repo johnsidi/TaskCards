@@ -17,7 +17,7 @@ function TaskForm({ createHandler }) {
 
   return (
     <div className='form'>
-      <h3>Create a new task</h3>
+      <h3>Create a New Task</h3>
       <form onSubmit={submitHandler}>
         <label>Description</label>
         <textarea
@@ -54,7 +54,7 @@ function TaskForm({ createHandler }) {
         <br />
 
         <button className='button-form' type='submit'>
-          Create task
+          Create Task
         </button>
       </form>
     </div>

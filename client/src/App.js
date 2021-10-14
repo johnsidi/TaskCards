@@ -12,8 +12,7 @@ function App() {
       </header>
       <Dashboard />
       <footer>
-        Sidiropoulos Ioannis <br /> <br /> Solo project for Codeworks - August
-        2021
+        John Sidiropoulos <br /> <br /> Solo project for Codeworks - August 2021
       </footer>
     </div>
   );
