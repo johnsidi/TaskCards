@@ -31,6 +31,7 @@ function Dashboard({ searchString }) {
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
+  const editHandler = async (id) => {};
   useEffect(() => {
     const results = tasks.filter((task) =>
       task.title.toLowerCase().includes(searchString.toLowerCase())

@@ -52,3 +52,15 @@ h2 {
   outline: 0;
   border: 0;
 }
+
+.editButton {
+  outline: 0;
+  border: 0;
+}
+
+.editIcon {
+  background-color: white;
+  background-repeat: no-repeat;
+  /* stroke: transparent; */
+  stroke-width: 0px;
+}

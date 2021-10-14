@@ -120,7 +120,9 @@ function CreateIndexCard({ tasks, cardSize }) {
                 {/* {'Task: ' + atask.title + '\n\n'} */}
                 {/* the tasks are sorted my creation date, the latest first - I
                 want the index of the original array, the latest task has the
-                biggest number */}
+                biggest number
+                - [ ] it is better to become optional in the future
+                it is better not to delete any task in order for the ID to be unique */}
                 {'ID: ' +
                   (tasks.length - tasks.indexOf(atask)).toString() +
                   ' - ' +
