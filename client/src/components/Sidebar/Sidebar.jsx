@@ -3,7 +3,7 @@ import React, { useState } from 'react';
 import './Sidebar.css';
 import FilterButton from '../FilterButton/FilterButton';
 
-function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
+function Sidebar({ tasks, propertyFilterHandler }) {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -16,6 +16,7 @@ function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
       Date.parse(task.startDate) < Date.now() && task.startDate != '',
     'Have Start Date': (task) => task.startDate != '',
     'Have Due Date': (task) => task.dueDate != '',
+
     automation: (task) => task.category === 'automation',
     DIY: (task) => task.category === 'DIY',
     internet: (task) => task.category === 'internt',
@@ -27,8 +28,6 @@ function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
     shopping: (task) => task.category === 'shopping',
     TaskCards: (task) => task.category === 'TaskCards',
     writing: (task) => task.category === 'writng',
-
-
   };
 
   const FILTER_NAMES = Object.keys(FILTER_MAP);
@@ -46,37 +45,8 @@ function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
       <button className='hamburger' type='button' onClick={showSidebar}>
         <div></div>
       </button>
-      <div className='sidebarItems'>
-        {filterList}
-        {/* <ul onClick={showSidebar}> */}
-        <ul>
-          <li>
-            {/* <a href='' onClick={setFilterString}> */}
-            <a href=''>All tasks </a>
-          </li>
-          <li>
-            <a href=''>Active tasks</a>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                savedSearchHandler('#TaskCards');
-              }}
-            >
-              Completed tasks
-            </button>
-          </li>
-          <li>
-            <button
-              onClick={() => {
-                savedSearchHandler('#TaskCards');
-              }}
-            >
-              Tag: TaskCards tasks
-            </button>
-          </li>
-        </ul>
-      </div>
+      Filters
+      <div className='sidebarItems'>{filterList}</div>
     </nav>
   );
 }

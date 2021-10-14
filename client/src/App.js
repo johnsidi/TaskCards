@@ -7,12 +7,6 @@ import Dashboard from './containers/Dashboard/Dashboard';
 function App() {
   const [searchString, setSearchString] = useState('');
 
-  const savedSearchHandler = async (tag) => {
-    // console.log('tag', tag);
-    // return '1';
-
-    setSearchString(tag);
-  };
 
   return (
     <div className='App'>
@@ -38,7 +32,6 @@ function App() {
       </header>
       <Dashboard
         searchString={searchString}
-        savedSearchHandler={savedSearchHandler}
       />
       <footer>
         John Sidiropoulos <br /> <br /> Solo project for Codeworks - August 2021
