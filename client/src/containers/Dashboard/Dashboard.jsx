@@ -48,22 +48,20 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
       completedTask = {
         ...comTask,
         completed: true,
-        completionDate: new Date(),
+        completionDates: [...comTask.completionDates, new Date()],
       };
     } else {
       completedTask = {
         ...comTask,
         completed: false,
-        completionDate: '',
       };
     }
     const withCreatedTasks = tasks.map((task) => {
       if (id === task._id) {
-        console.log('com date', completedTask.completionDate);
         return {
           ...task,
           completed: completedTask.completed,
-          completionDate: completedTask.completionDate,
+          completionDates: completedTask.completionDates,
         };
       }
       return task;
@@ -73,6 +71,7 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
     setTasks(withCreatedTasks);
     setTasksCopy(withCreatedTasks);
   };
+
   const editHandler = async (id, editedTask) => {
     const task = await ApiService.updateTask(id, editedTask);
 

@@ -7,7 +7,7 @@ function TaskForm({ createHandler }) {
     startDate: '',
     dueDate: '',
     completed: false,
-    completionDate: '',
+    completionDates: [],
     category: '',
   });
 
@@ -18,7 +18,7 @@ function TaskForm({ createHandler }) {
       title: '',
       startDate: '',
       dueDate: '',
-      completionDate: '',
+      completionDates: [],
       completed: false,
       category: '',
     });

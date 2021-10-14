@@ -54,13 +54,16 @@ function TaskItem({
         ) : (
           ''
         )}
-        {task.completionDate ? (
+        {task.completionDates ? (
           <p>
             {/* {console.log('completion date', task.completionDate)} */}
             {/* {console.log('completion date', new Date(task.completionDate))} */}
             {/* <b>Completed:</b> {task.completionDate} */}
             <b>Completed:</b>{' '}
-            {moment(new Date(task.completionDate)).format('YYYY-MM-DD')}
+            {task.completionDates.map(
+              (completionDate) =>
+                moment(new Date(completionDate)).format('YYYY-MM-DD') + ' / '
+            )}
           </p>
         ) : (
           ''

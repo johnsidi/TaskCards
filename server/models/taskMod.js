@@ -19,8 +19,8 @@ const taskSchema = new mongoose.Schema(
       type: Boolean,
       required: false,
     },
-    completionDate: {
-      type: String,
+    completionDates: {
+      type: [String],
       required: false,
     },
     interval: {

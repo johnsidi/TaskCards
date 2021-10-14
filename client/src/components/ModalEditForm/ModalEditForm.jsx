@@ -6,7 +6,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
     title: task.title,
     startDate: task.startDate,
     dueDate: task.dueDate,
-    completionDate: task.completionDate,
+    completionDates: task.completionDates,
     category: task.category,
   });
 
