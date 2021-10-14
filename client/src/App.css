@@ -15,10 +15,14 @@ body {
 header {
   display: flex;
   flex-direction: row;
-  justify-items: flex-end;
+  /* justify-items: space-between; */
   background-color: orange;
   font-size: 40px;
   padding: 1rem;
+}
+
+.appName {
+  margin-left: auto;
 }
 
 footer {

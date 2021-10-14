@@ -3,6 +3,7 @@ import React, { useState } from 'react';
 import searchIcon from './assets/search.svg';
 
 import Dashboard from './containers/Dashboard/Dashboard';
+import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [searchString, setSearchString] = useState('');
@@ -10,7 +11,8 @@ function App() {
   return (
     <div className='App'>
       <header>
-        TaskCards
+        <Sidebar />
+        <div className='appName'>TaskCards</div>
         <div className='navbar_search'>
           <img
             className='navbar_search_icon'
