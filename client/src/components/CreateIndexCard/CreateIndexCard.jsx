@@ -79,7 +79,7 @@ function CreateIndexCard({ tasks, cardSize }) {
       fontSize: 13,
       fontStyle: 'normal',
       marginLeft: 30,
-      marginRight: 40,
+      marginRight: 60,
       marginTop: 10,
       color: 'black',
     },
@@ -89,7 +89,7 @@ function CreateIndexCard({ tasks, cardSize }) {
       fontStyle: 'bold',
 
       marginLeft: 30,
-      marginRight: 40,
+      marginRight: 60,
       marginTop: 20,
       marginBottom: 1,
       color: 'grey',
