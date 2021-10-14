@@ -14,8 +14,8 @@ function IndexCard3by5({ tasks }) {
 
   const [tasksForPrinting, setTasksForPrinting] = useState([
     {
-      title: 'test',
-      startDate: 'test',
+      title: 'select one or more tasks for printing and click on the button',
+      startDate: 'now',
     },
   ]);
 
