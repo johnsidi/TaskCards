@@ -78,7 +78,6 @@ function IndexCard3by5({ tasks }) {
           ))}
         </Document>
       </PDFViewer>
-      )
     </div>
   );
 }
