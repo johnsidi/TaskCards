@@ -28,7 +28,7 @@ function TaskForm({ createHandler }) {
           value={task.title}
           cols='40'
           rows='3'
-          accessKey='n'
+          accessKey='d'
           title='ctrl + alt + n'
         />
         <br />

@@ -8,7 +8,9 @@
   flex: 7;
   padding: 1rem;
   overflow-y: scroll;
-  min-width: 500px;
+  min-width: 650px;
+  padding-left: 10vw;
+  padding-right: 5vw;
 }
 
 .form {
@@ -19,6 +21,7 @@
   flex: 3;
   padding: 0.3rem;
   margin: 0rem auto;
+  padding-right: 10vw;
 }
 
 .form h3 {
