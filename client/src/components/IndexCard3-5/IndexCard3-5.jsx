@@ -66,9 +66,6 @@ function IndexCard3by5({ tasks }) {
 
   return (
     <div className='indexCard'>
-      <button type='button' className='button-print' onClick={checkBoxPicks}>
-        Print selected tasks
-      </button>
       <PDFViewer showToolbar='true' width='500' height='400'>
         <Document>
           {tasksForPrinting.map((atask) => (
@@ -101,6 +98,9 @@ function IndexCard3by5({ tasks }) {
           ))}
         </Document>
       </PDFViewer>
+      <button type='button' className='button-print' onClick={checkBoxPicks}>
+        Print selected tasks
+      </button>
     </div>
   );
 }

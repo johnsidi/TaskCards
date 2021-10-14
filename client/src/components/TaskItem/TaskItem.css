@@ -1,14 +1,21 @@
 .printCheckBox {
   display: inline-block;
-
+  margin-top: 0.3rem;
   overflow: hidden;
 }
 .taskContent {
+  align-items: center;
+
   display: flex;
   flex-direction: row;
   gap: 1rem;
   padding: 0.5rem;
+  border-top: 1px solid black;
 }
+
+/* .taskContent::first-of-type {
+  border-top: 0px;
+} */
 
 .taskDelete {
   display: inline-block;
