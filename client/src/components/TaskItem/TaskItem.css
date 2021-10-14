@@ -49,6 +49,9 @@ h3 {
   color: darkorange;
 }
 
+p {
+  color: black;
+}
 /* .taskContent::first-of-type {
   border-top: 0px;
 } */
@@ -107,4 +110,5 @@ h3 {
 
 .taskContent .doneCheckbox:checked ~ .title {
   text-decoration: line-through;
+  color: lightgray;
 }

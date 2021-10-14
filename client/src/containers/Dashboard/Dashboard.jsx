@@ -58,24 +58,7 @@ function Dashboard({ searchString }) {
       }
       return task;
     });
-    // console.log('1');
-    // console.log('id', id);
 
-    // const withCreatedTasks = tasks.map((task) => {
-    //   console.log(2);
-    //   // console.log('task.id', task._id);
-    //   if (id === task._id) {
-    //     // console.log('passed task', task);
-    //     console.log('com date', comTask.completionDate);
-    //     console.log('complted', comTask.completed);
-    //     return {
-    //       ...task,
-    //       completed: !comTask.completed,
-    //       completionDate: comTask.completionDate,
-    //     };
-    //   }
-    //   return task;
-    // });
 
     await ApiService.updateTask(id, completedTask);
     setTasks(withCreatedTasks);
