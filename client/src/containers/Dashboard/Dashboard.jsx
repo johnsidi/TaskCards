@@ -59,7 +59,6 @@ function Dashboard({ searchString }) {
       return task;
     });
 
-
     await ApiService.updateTask(id, completedTask);
     setTasks(withCreatedTasks);
   };
@@ -119,7 +118,7 @@ function Dashboard({ searchString }) {
             <CreateIndexCard tasks={tasks} cardSize={cardSize} />
           ) : null}
           <div className='selectCard'>
-            <label for='card-select'>Select card size:</label>
+            <label htmlFor='card-select'>Select card size:</label>
             <br />
             <select
               className='card-select'

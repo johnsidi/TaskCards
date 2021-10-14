@@ -7,13 +7,13 @@
   background-color: white;
   flex: 7;
   overflow-y: scroll;
-  min-width: 650px;
+  /* min-width: 650px; */
+  max-height: 2300px;
+
   padding-top: 3vw;
   padding-bottom: 3vw;
   padding-left: 10vw;
   padding-right: 5vw;
-  overflow-x: hidden;
-  max-height: 2300px;
 }
 
 .form {
@@ -44,4 +44,11 @@
 
 .totalTasks {
   font-size: 2em;
+}
+
+@media screen and (max-width: 1020px) {
+  .dashboard {
+    display: flex;
+    flex-direction: column-reverse;
+  }
 }
