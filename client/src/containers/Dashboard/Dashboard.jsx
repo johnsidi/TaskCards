@@ -41,16 +41,11 @@ function Dashboard({ searchString }) {
   return (
     <div className='dashboard'>
       <div className='tasks'>
+        
         {tasks.length && searchString ? (
-          <TaskList
-            id='list'
-            tasks={filteredTasks}
-            deleteHandler={deleteHandler}
-          />
-        ) : (
-          <TaskList id='list' tasks={tasks} deleteHandler={deleteHandler} />
-        )}
-      </div>
+          <TaskList id='list' tasks={filteredTasks} deleteHandler={deleteHandler} />
+        ) : <TaskList id='list' tasks={tasks} deleteHandler={deleteHandler} />}
+      </div> 
       <div className='form'>
         <div className='indexCard'>
           {tasks.length ? (
@@ -70,7 +65,9 @@ function Dashboard({ searchString }) {
               <option value='A4'>A4</option>
               <option value='A7'>A7</option>
               <option value='216 360'>3" x 5"</option>
-              <option value='360 123'>T-card size 2 long</option>
+              {/* <option value='360 123'>T-card size 2 long</option> */}
+              <option value='270 360'>3.5" x 5"</option>
+
             </select>
           </div>
         </div>
