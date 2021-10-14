@@ -34,3 +34,20 @@ exports.deleteTask = async (req, res) => {
     res.send(error);
   }
 };
+
+exports.updateTask = async (req, res) => {
+  const { id } = req.params;
+
+  const inputReq = req.body;
+  try {
+    const updatedTask = await Task.findOneAndUpdate({ _id: id }, inputReq, {
+      upsert: true,
+    });
+
+    res.status(201);
+    res.send(updatedTask);
+  } catch (error) {
+    res.status(500);
+    res.send(error);
+  }
+};

@@ -33,4 +33,18 @@ const deleteTask = async (id) => {
   });
 };
 
-export default { getTasks, createTask, deleteTask };
+const updateTask = async (id, taskMetadata) => {
+  try {
+    const res = await fetch(`${BASE_URL}/${id}`, {
+      method: 'PUT',
+      body: JSON.stringify(taskMetadata),
+      headers: { 'Content-Type': 'application/json' },
+    });
+    return res.json();
+  } catch (error) {
+    console.log('Error', error); // eslint-disable-line no-console
+    return null;
+  }
+};
+
+export default { getTasks, createTask, deleteTask, updateTask };

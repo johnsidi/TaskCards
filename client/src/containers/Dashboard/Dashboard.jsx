@@ -32,8 +32,8 @@ function Dashboard({ searchString }) {
   };
 
   const editHandler = async (id, editedTask) => {
-    console.log('editedTaskMetadata', editedTask);
-    console.log('id', id);
+    const task = await ApiService.updateTask(id, editedTask);
+
     const editedTaskList = tasks.map((task) => {
       // if this task has the same ID as the edited task
       if (id === task._id) {
