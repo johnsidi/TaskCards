@@ -8,6 +8,7 @@ import './Dashboard.css';
 function Dashboard({ searchString }) {
   const [tasks, setTasks] = useState([]);
   const [cardSize, setCardSize] = useState('216 360');
+  const [filteredTasks, setFilteredTasks] = useState([]);
 
   async function fetchTasks() {
     const tasksList = await ApiService.getTasks();
@@ -34,17 +35,22 @@ function Dashboard({ searchString }) {
     const results = tasks.filter((task) =>
       task.title.toLowerCase().includes(searchString.toLowerCase())
     );
-    setTasks(results);
+    setFilteredTasks(results);
   }, [searchString]);
 
   return (
     <div className='dashboard'>
       <div className='tasks'>
-        {tasks.length ? (
+        {tasks.length && searchString ? (
+          <TaskList
+            id='list'
+            tasks={filteredTasks}
+            deleteHandler={deleteHandler}
+          />
+        ) : (
           <TaskList id='list' tasks={tasks} deleteHandler={deleteHandler} />
-        ) : null}
+        )}
       </div>
-
       <div className='form'>
         <div className='indexCard'>
           {tasks.length ? (
