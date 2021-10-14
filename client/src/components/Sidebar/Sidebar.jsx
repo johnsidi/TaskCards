@@ -1,10 +1,32 @@
 // https://w3collective.com/react-sidebar-navigation-component/
 import React, { useState } from 'react';
 import './Sidebar.css';
+import FilterButton from '../FilterButton/FilterButton';
 
-function Sidebar({ setFilterString, tagFilterHandler }) {
+function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
+
+  const FILTER_MAP = {
+    All: () => true,
+    Active: (task) => !task.completed,
+
+    Completed: (task) => task.completed,
+    AlreadyStarted: (task) =>
+      task.startDate < Date.now() && task.startDate != '',
+    'Have Start Date': (task) => task.startDate != '',
+    'Have Due Date': (task) => task.dueDate != '',
+  };
+
+  const FILTER_NAMES = Object.keys(FILTER_MAP);
+  const filterList = FILTER_NAMES.map((name) => (
+    <FilterButton
+      key={name}
+      name={name}
+      propertyFilterHandler={propertyFilterHandler}
+      FILTER_MAP={FILTER_MAP}
+    />
+  ));
 
   return (
     <nav className={sidebar ? 'sidebar active' : 'sidebar'}>
@@ -12,6 +34,7 @@ function Sidebar({ setFilterString, tagFilterHandler }) {
         <div></div>
       </button>
       <div className='sidebarItems'>
+        {filterList}
         {/* <ul onClick={showSidebar}> */}
         <ul>
           <li>
@@ -22,18 +45,22 @@ function Sidebar({ setFilterString, tagFilterHandler }) {
             <a href=''>Active tasks</a>
           </li>
           <li>
-            <a href=''>Completed tasks</a>
+            <button
+              onClick={() => {
+                savedSearchHandler('#TaskCards');
+              }}
+            >
+              Completed tasks
+            </button>
           </li>
           <li>
-            <p
+            <button
               onClick={() => {
-                console.log('tagFilterHandler', typeof tagFilterHandler);
-                console.log('tagFilterHandler', tagFilterHandler);
-                tagFilterHandler('#TaskCards');
+                savedSearchHandler('#TaskCards');
               }}
             >
               Tag: TaskCards tasks
-            </p>
+            </button>
           </li>
         </ul>
       </div>

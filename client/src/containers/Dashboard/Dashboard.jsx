@@ -7,16 +7,21 @@ import Sidebar from '../../components/Sidebar/Sidebar.jsx';
 
 import './Dashboard.css';
 
-function Dashboard({ searchString, tagFilterHandler, filterString }) {
+function Dashboard({ searchString, savedSearchHandler, filterString }) {
   const [tasks, setTasks] = useState([]);
   const [cardSize, setCardSize] = useState('216 360');
-  const [filteredTasks, setFilteredTasks] = useState([]);
-  // const [filterString, setFilterString] = useState('');
+  const [searchFilteredTasks, setSearchFilteredTasks] = useState([]);
+  const [tasksCopy, setTasksCopy] = useState([]);
 
   async function fetchTasks() {
     const tasksList = await ApiService.getTasks();
     console.log('TaskList', tasksList);
     setTasks(tasksList);
+    //I need this list in order to be able to go to
+    //the initial state before filtering
+    //I think it is better to have then on memory
+    //than doing an API call
+    setTasksCopy(tasksList);
   }
 
   useEffect(() => {
@@ -27,12 +32,14 @@ function Dashboard({ searchString, tagFilterHandler, filterString }) {
     const task = await ApiService.createTask(taskMetadata);
     console.log('after mongoose', task);
     setTasks((prevState) => [...prevState, task]);
+    setTasksCopy((prevState) => [...prevState, task]);
   };
 
   const deleteHandler = async (id) => {
     await ApiService.deleteTask(id);
     // console.log('delete handler id', id);
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
+    setTasksCopy((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
   const completeTaskHandler = async (id, comTask) => {
@@ -64,6 +71,7 @@ function Dashboard({ searchString, tagFilterHandler, filterString }) {
 
     await ApiService.updateTask(id, completedTask);
     setTasks(withCreatedTasks);
+    setTasksCopy(withCreatedTasks);
   };
   const editHandler = async (id, editedTask) => {
     const task = await ApiService.updateTask(id, editedTask);
@@ -80,41 +88,43 @@ function Dashboard({ searchString, tagFilterHandler, filterString }) {
       return task;
     });
     setTasks(withEditedTasks);
+    setTasksCopy(withEditedTasks);
+  };
+
+  const propertyFilterHandler = (filterName) => {
+    const propertyFilteredTasks = tasksCopy.filter(filterName);
+    setTasks(propertyFilteredTasks);
   };
 
   useEffect(() => {
     const results = tasks.filter((task) =>
       task.title.toLowerCase().includes(searchString.toLowerCase())
     );
-    setFilteredTasks(results);
+    setSearchFilteredTasks(results);
   }, [searchString]);
 
   return (
     <div className='dashboard'>
-      <Sidebar tagFilterHandler={tagFilterHandler} />
+      <Sidebar
+        tasks={tasks}
+        propertyFilterHandler={propertyFilterHandler}
+        savedSearchHandler={savedSearchHandler}
+      />
       <div className='tasks'>
         <div className='totalTasks'>
           Total tasks:{' '}
-          {tasks.length && searchString ? filteredTasks.length : tasks.length}
+          {tasks.length && searchString
+            ? searchFilteredTasks.length
+            : tasks.length}
         </div>
 
-        {tasks.length && searchString ? (
-          <TaskList
-            id='list'
-            tasks={filteredTasks}
-            editHandler={editHandler}
-            deleteHandler={deleteHandler}
-            completeTaskHandler={completeTaskHandler}
-          />
-        ) : (
-          <TaskList
-            id='list'
-            tasks={tasks}
-            editHandler={editHandler}
-            deleteHandler={deleteHandler}
-            completeTaskHandler={completeTaskHandler}
-          />
-        )}
+        <TaskList
+          id='list'
+          tasks={tasks.length && searchString ? searchFilteredTasks : tasks}
+          editHandler={editHandler}
+          deleteHandler={deleteHandler}
+          completeTaskHandler={completeTaskHandler}
+        />
       </div>
       <div className='form'>
         <div className='indexCard'>
