@@ -1,5 +1,5 @@
 .printCheckbox {
-  display: inline-block;
+  display: inline-flex;
   margin-top: 0.3rem;
   overflow: hidden;
   /* Double-sized Checkboxes */
@@ -8,11 +8,26 @@
   -webkit-transform: scale(2); /* Safari and Chrome */
   -o-transform: scale(2); /* Opera */
   transform: scale(2);
-  padding: 10px;
+  outline: none;
 }
-/* it does not work */
-.buttonContainer > input:checked {
-  background-color: orange;
+
+/* input[type='checkbox']:checked:after {
+  background: orange;
+  content: '\2714';
+  color: black;
+  box-shadow: none !important;
+} */
+
+svg.printIcon {
+  margin-top: 20px;
+}
+.buttonContainer {
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  width: 90px;
+  justify-items: center;
+  align-items: center;
 }
 
 .p {
@@ -29,7 +44,7 @@
   text-overflow: ellipsis;
 }
 
-h2 {
+h3 {
   color: darkorange;
 }
 
