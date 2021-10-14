@@ -17,14 +17,14 @@ function TaskForm({ createHandler }) {
       <h3>Create a new task</h3>
       <form onSubmit={submitHandler}>
         <label>Description</label>
-        <input
-          className='input-form'
+        <textarea
           required
           onChange={(e) => {
             setTask({ ...task, title: e.target.value });
           }}
           value={task.title}
-          type='text'
+          cols='40'
+          rows='3'
         />
         <br />
 
@@ -36,7 +36,19 @@ function TaskForm({ createHandler }) {
             setTask({ ...task, startDate: e.target.value });
           }}
           value={task.startDate}
-          type='datetime-local'
+          type='date'
+        />
+        <br />
+
+        <label>Due Date</label>
+        <input
+          className='input-form'
+          required
+          onChange={(e) => {
+            setTask({ ...task, dueDate: e.target.value });
+          }}
+          value={task.dueDate}
+          type='date'
         />
         <br />
 

@@ -3,7 +3,6 @@
   height: 2rem;
   margin: 0.5rem;
   border-radius: 5px;
-  border-color: none;
 }
 
 label {
@@ -20,4 +19,10 @@ label {
   margin: 0.5rem;
   border-radius: 5px;
   background-color: orange;
+}
+
+textarea {
+  width: 80%;
+  display: block;
+  margin: 0.5rem;
 }
