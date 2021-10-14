@@ -2,22 +2,18 @@
   align-items: center;
   display: flex;
   flex-direction: row;
+  /* flex-wrap: wrap; */
   gap: 1rem;
   padding: 0.5rem;
   border-top: 1px solid black;
   overflow: hidden;
 }
 
-.taskContent .doneCheckbox:checked ~ .title {
-  text-decoration: line-through;
-  color: lightgray;
-}
-
-.taskMetadata {
-  min-width: 400px;
+/* .taskMetadata {
+  min-width: 200px;
   max-width: 600px;
   text-overflow: ellipsis;
-}
+} */
 
 .title {
   overflow: scroll;
@@ -120,4 +116,10 @@ svg.printIcon {
   z-index: 99;
   background-color: #000;
   opacity: 0.75;
+}
+
+.taskContent .doneCheckbox:checked ~ .title {
+  text-decoration: line-through;
+  /* when I activated the following it stops applying!, crazy! */
+  /* color: lightgray; */
 }

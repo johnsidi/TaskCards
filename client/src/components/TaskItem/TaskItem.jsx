@@ -18,11 +18,9 @@ function TaskItem({ task, deleteHandler, editHandler, completeTaskHandler }) {
         }}
         className='doneCheckbox'
       ></input>
-      <span className='checkmark'></span>
-      <div className='taskMetadata'>
-        <div className='title'>
-          <h3 id={task._id}>{task.title}</h3>
-        </div>
+      <span class='checkmark'></span>
+      <div className='title'>
+        <h3 id={task._id}>{task.title}</h3>
         <p>
           {/* {console.log('date created', task.createdAt)} */}
           <b>Creation date:</b> {moment(task.createdAt).format('YYYY-MM-DD')}
