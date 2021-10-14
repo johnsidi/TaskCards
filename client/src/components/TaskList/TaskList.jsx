@@ -15,6 +15,7 @@ function TaskList({ tasks, deleteHandler, editHandler, completeTaskHandler }) {
   return sortedTasks.map((task) => (
     <TaskItem
       key={task._id}
+      taskIndex={tasks.length - tasks.indexOf(task)}
       task={task}
       editHandler={editHandler}
       deleteHandler={deleteHandler}

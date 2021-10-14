@@ -8,5 +8,6 @@
     "activityBar.background": "#29310B",
     "titleBar.activeBackground": "#3A440F",
     "titleBar.activeForeground": "#F9FBEE"
-  }
+  },
+  "print.colourScheme": "Stack Overflow"
 }

@@ -4,7 +4,13 @@ import React from 'react';
 import ModalEditForm from '../../components/ModalEditForm/ModalEditForm';
 import useModal from '../../useModal';
 
-function TaskItem({ task, deleteHandler, editHandler, completeTaskHandler }) {
+function TaskItem({
+  task,
+  taskIndex,
+  deleteHandler,
+  editHandler,
+  completeTaskHandler,
+}) {
   const { toggleModal, visible } = useModal();
   return (
     <div className='taskContent'>
@@ -20,7 +26,7 @@ function TaskItem({ task, deleteHandler, editHandler, completeTaskHandler }) {
       ></input>
       <span class='checkmark'></span>
       <div className='title'>
-        <h3 id={task._id}>{task.title}</h3>
+        <h3 id={task._id}>{taskIndex + ' - ' + task.title}</h3>
         {task.category != [] ? (
           <p>
             <b>Category:</b> {task.category}

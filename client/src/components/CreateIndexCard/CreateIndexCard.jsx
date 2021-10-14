@@ -123,8 +123,8 @@ function CreateIndexCard({ tasks, cardSize }) {
                 biggest number
                 - [ ] it is better to become optional in the future
                 it is better not to delete any task in order for the ID to be unique */}
-                {'ID: ' +
-                  (tasks.length - tasks.indexOf(atask)).toString() +
+                {/* {'ID: ' + */}
+                {(tasks.length - tasks.indexOf(atask)).toString() +
                   ' - ' +
                   atask.title +
                   '\n\n'}
