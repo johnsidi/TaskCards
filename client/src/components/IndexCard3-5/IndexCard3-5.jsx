@@ -53,10 +53,10 @@ function IndexCard3by5({ tasks }) {
 
   const styles = StyleSheet.create({
     body: {
-      fontsize: 14,
+      fontsize: 12,
     },
     label: {
-      fontsize: 14,
+      fontsize: 12,
       color: 'grey',
     },
   });
@@ -74,6 +74,8 @@ function IndexCard3by5({ tasks }) {
               {/* {console.log("task for printing", taskForPrinting[0])} */}
               <Text style={styles.body}>{atask.title}</Text>
               <Text style={styles.label}>Start date: </Text>
+              <Text style={styles.body}> {atask.startDate}</Text>
+              <Text style={styles.label}>Due date: </Text>
               <Text style={styles.body}> {atask.startDate}</Text>
             </Page>
           ))}
