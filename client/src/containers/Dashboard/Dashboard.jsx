@@ -2,11 +2,12 @@ import React, { useEffect, useState } from 'react';
 import ApiService from '../../ApiService';
 import TaskForm from '../../components/TaskForm/TaskForm';
 import TaskList from '../../components/TaskList/TaskList.jsx';
-import IndexCard3by5 from '../../components/IndexCard3-5/IndexCard3-5';
+import CreateIndexCard from '../../components/CreateIndexCard/CreateIndexCard.jsx';
 import './Dashboard.css';
 
 function Dashboard() {
   const [tasks, setTasks] = useState([]);
+  const [cardSize, setCardSize] = useState('A4');
 
   async function fetchTasks() {
     const tasksList = await ApiService.getTasks();
@@ -25,7 +26,7 @@ function Dashboard() {
 
   const deleteHandler = async (id) => {
     await ApiService.deleteTask(id);
-    console.log('delete handler id', id)
+    console.log('delete handler id', id);
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
@@ -39,7 +40,9 @@ function Dashboard() {
 
       <div className='form'>
         <div className='indexCard'>
-          {tasks.length ? <IndexCard3by5 tasks={tasks} /> : null}
+          {tasks.length ? (
+            <CreateIndexCard tasks={tasks} cardSize={cardSize} />
+          ) : null}
         </div>
         <TaskForm createHandler={createHandler} />
       </div>
