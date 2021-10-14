@@ -5,7 +5,13 @@
 .taskContent {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  /* justify-content: flex-start; */
+
   gap: 1rem;
   padding: 0.5rem;
+}
+
+.taskDelete {
+  display: inline-block;
+  margin-left: auto;
 }
