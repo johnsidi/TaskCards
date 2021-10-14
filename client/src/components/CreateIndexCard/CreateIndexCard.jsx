@@ -118,8 +118,14 @@ function CreateIndexCard({ tasks, cardSize }) {
             >
               <Text key={atask._id} style={styles.body}>
                 {/* {'Task: ' + atask.title + '\n\n'} */}
-
-                {atask.title + '\n\n'}
+                {/* the tasks are sorted my creation date, the latest first - I
+                want the index of the original array, the latest task has the
+                biggest number */}
+                {'ID: ' +
+                  (tasks.length - tasks.indexOf(atask)).toString() +
+                  ' - ' +
+                  atask.title +
+                  '\n\n'}
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Start date:
