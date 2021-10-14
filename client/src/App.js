@@ -8,6 +8,7 @@ function App() {
     <div className='App'>
       <header>TaskCards</header>
       <Dashboard />
+      <footer>Sidiropoulos Ioannis <br /> Solo project for Codeworks - 2021</footer>
     </div>
   );
 }

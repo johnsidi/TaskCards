@@ -17,3 +17,9 @@ header {
   font-size: 40px;
   padding: 1rem;
 }
+
+footer {
+  padding: 2rem;
+  background-color: orange;
+  font-size: 18px;
+}
