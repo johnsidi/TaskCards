@@ -90,7 +90,6 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
     setTasks(withEditedTasks);
     setTasksCopy(withEditedTasks);
   };
-
   const propertyFilterHandler = (filterName) => {
     const propertyFilteredTasks = tasksCopy.filter(filterName);
     setTasks(propertyFilteredTasks);

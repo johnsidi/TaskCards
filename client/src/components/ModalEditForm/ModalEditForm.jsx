@@ -7,6 +7,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
     startDate: task.startDate,
     dueDate: task.dueDate,
     completionDate: task.completionDate,
+    category: task.category,
   });
 
   const submitHandler = async (e) => {
@@ -17,6 +18,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
       title: editedTask.title,
       startDate: editedTask.startDate,
       dueDate: editedTask.dueDate,
+      category: editedTask.category,
     });
   };
 
@@ -37,6 +39,18 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 rows='3'
                 accessKey='d'
                 title='ctrl + alt + n'
+              />
+              <br />
+              <input
+                className='input-form'
+                onChange={(e) => {
+                  setEditedTask({
+                    ...task,
+                    category: e.target.value,
+                  });
+                }}
+                value={task.category}
+                type='text'
               />
               <br />
 

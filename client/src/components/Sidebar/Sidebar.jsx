@@ -12,10 +12,23 @@ function Sidebar({ tasks, savedSearchHandler, propertyFilterHandler }) {
     Active: (task) => !task.completed,
 
     Completed: (task) => task.completed,
-    AlreadyStarted: (task) =>
+    'Already Started': (task) =>
       Date.parse(task.startDate) < Date.now() && task.startDate != '',
     'Have Start Date': (task) => task.startDate != '',
     'Have Due Date': (task) => task.dueDate != '',
+    automation: (task) => task.category === 'automation',
+    DIY: (task) => task.category === 'DIY',
+    internet: (task) => task.category === 'internt',
+    JavaScript: (task) => task.category === 'JavaScript',
+    'job hunting': (task) => task.category === 'job hunting',
+    London: (task) => task.category === 'London',
+    people: (task) => task.category === 'people',
+    programming: (task) => task.category === 'programming',
+    shopping: (task) => task.category === 'shopping',
+    TaskCards: (task) => task.category === 'TaskCards',
+    writing: (task) => task.category === 'writng',
+
+
   };
 
   const FILTER_NAMES = Object.keys(FILTER_MAP);

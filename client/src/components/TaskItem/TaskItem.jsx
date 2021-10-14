@@ -21,13 +21,21 @@ function TaskItem({ task, deleteHandler, editHandler, completeTaskHandler }) {
       <span class='checkmark'></span>
       <div className='title'>
         <h3 id={task._id}>{task.title}</h3>
+        {task.category != [] ? (
+          <p>
+            <b>Category:</b> {task.category}
+          </p>
+        ) : (
+          ''
+        )}
         <p>
           {/* {console.log('date created', task.createdAt)} */}
           <b>Creation date:</b> {moment(task.createdAt).format('YYYY-MM-DD')}
         </p>
+
         {task.dueDate ? (
           <p>
-            <b>Due date:</b> {task.dueDate}{' '}
+            <b>Due date:</b> {task.dueDate}
           </p>
         ) : (
           ''

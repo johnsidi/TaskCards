@@ -26,7 +26,7 @@ const taskSchema = new Schema(
       type: String,
       required: false,
     },
-    tags: {
+    category: {
       type: String,
       required: false,
     },

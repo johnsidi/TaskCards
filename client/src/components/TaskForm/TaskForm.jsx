@@ -8,6 +8,7 @@ function TaskForm({ createHandler }) {
     dueDate: '',
     completed: false,
     completionDate: '',
+    category: '',
   });
 
   const submitHandler = async (e) => {
@@ -19,6 +20,7 @@ function TaskForm({ createHandler }) {
       dueDate: '',
       completionDate: '',
       completed: false,
+      category: '',
     });
   };
 
@@ -39,14 +41,14 @@ function TaskForm({ createHandler }) {
           title='ctrl + alt + n'
         />
         <br />
-        <label>Tags</label>
+        <label>Category</label>
         <input
           className='input-form'
           onChange={(e) => {
-            setTask({ ...task, dueDate: e.target.value });
+            setTask({ ...task, category: e.target.value });
           }}
-          value={task.dueDate}
-          type='date'
+          value={task.category}
+          type='text'
         />
         <br />
 
@@ -71,7 +73,6 @@ function TaskForm({ createHandler }) {
           type='date'
         />
         <br />
-        
 
         <button
           className='button-form'
