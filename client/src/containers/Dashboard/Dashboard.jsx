@@ -43,6 +43,23 @@ function Dashboard() {
           {tasks.length ? (
             <CreateIndexCard tasks={tasks} cardSize={cardSize} />
           ) : null}
+          <div className='selectCard'>
+            <label for='card-select'>Select card size:</label>
+            <br />
+            <select
+              className='card-select'
+              onChange={(e) => {
+                setCardSize(e.target.value);
+              }}
+              value={cardSize}
+            >
+              <option value=''>--Please choose an option--</option>
+              <option value='A4'>A4</option>
+              <option value='A7'>A7</option>
+              <option value='216 360'>3" x 5"</option>
+              <option value='360 123'>T-card size 2 long</option>
+            </select>
+          </div>
         </div>
         <TaskForm createHandler={createHandler} />
       </div>
