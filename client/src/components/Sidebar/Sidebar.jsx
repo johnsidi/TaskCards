@@ -30,19 +30,22 @@ function Sidebar({ tasks, propertyFilterHandler }) {
     // writing: (task) => task.category === 'writng',
   };
 
-  const taskCategories = new Set();
-  
+  const usedCategories = new Set();
+
   tasks.forEach((task) => {
-    taskCategories.add(task.category);
+    const taskCats = task.category.split(', ');
+    taskCats.forEach((cat) => {
+      usedCategories.add(cat);
+    });
   });
-  taskCategories.forEach(
-    (taskCategory) =>
-      (FILTER_MAP[
-        taskCategory
-      ] = task => task.category === taskCategory)
+
+  usedCategories.forEach(
+    (usedCategory) =>
+      (FILTER_MAP[usedCategory] = (task) =>
+        task.category.includes(usedCategory))
   );
 
-  const FILTER_NAMES = Object.keys(FILTER_MAP);
+  const FILTER_NAMES = Object.keys(FILTER_MAP).sort();
   const filterList = FILTER_NAMES.map((name) => (
     <FilterButton
       key={name}

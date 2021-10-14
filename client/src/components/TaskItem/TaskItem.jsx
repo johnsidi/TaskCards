@@ -29,7 +29,7 @@ function TaskItem({
         <h3 id={task._id}>{task.ticket + ' - ' + task.title}</h3>
         {task.category != [] ? (
           <p>
-            <b>Category:</b> {task.category}
+            <b>Tags:</b> {task.category}
           </p>
         ) : (
           ''

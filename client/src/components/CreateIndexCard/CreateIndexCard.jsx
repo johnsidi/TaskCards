@@ -117,7 +117,10 @@ function CreateIndexCard({ tasks, cardSize }) {
         fontStyle: 'normal',
         marginLeft: 30,
         marginRight: 60,
-        marginTop: 10,
+        //for  Tcards 4+
+        marginTop: 0,
+        //for normal index cards
+        //marginTop: 10,
         color: 'black',
       },
       label: {
@@ -174,7 +177,7 @@ function CreateIndexCard({ tasks, cardSize }) {
                 {atask.ticket.toString() + ' ' + atask.title + '\n\n'}
               </Text>
               <Text key={atask._id} style={styles.label}>
-                Category:
+                Tags:
                 <Text key={atask._id} style={styles.metadata}>
                   {' ' + atask.category}
                 </Text>
