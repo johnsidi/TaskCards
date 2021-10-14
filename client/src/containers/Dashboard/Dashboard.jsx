@@ -95,8 +95,10 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
   };
 
   useEffect(() => {
-    const results = tasks.filter((task) =>
-      task.title.toLowerCase().includes(searchString.toLowerCase())
+    const results = tasks.filter(
+      (task) =>
+        task.title.toLowerCase().includes(searchString.toLowerCase()) ||
+        task.ticket.toString().includes(searchString.toString())
     );
     setSearchFilteredTasks(results);
   }, [searchString]);
