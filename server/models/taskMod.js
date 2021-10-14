@@ -23,7 +23,7 @@ const taskSchema = new mongoose.Schema(
       type: [String],
       required: false,
     },
-    interval: {
+    repeat: {
       type: String,
       required: false,
     },

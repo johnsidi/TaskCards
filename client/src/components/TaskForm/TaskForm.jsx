@@ -9,6 +9,7 @@ function TaskForm({ createHandler }) {
     completed: false,
     completionDates: [],
     category: '',
+    repeat: '',
   });
 
   const submitHandler = async (e) => {
@@ -21,6 +22,7 @@ function TaskForm({ createHandler }) {
       completionDates: [],
       completed: false,
       category: '',
+      repeat: '',
     });
   };
 
@@ -51,7 +53,24 @@ function TaskForm({ createHandler }) {
           type='text'
         />
         <br />
-
+        <label>Repeat</label>
+        <select
+          className='input-form'
+          onChange={(e) => {
+            setTask({ ...task, repeat: e.target.value });
+          }}
+          value={task.repeat}
+          type='text'
+        >
+          <option value=''>--Please choose an option--</option>
+          <option value='none' selected>
+            none
+          </option>
+          <option value='daily'>daily</option>
+          <option value='weekly'>weekly</option>
+          <option value='monthly'>monthly</option>
+          <option value='annually'>annually</option>
+        </select>
         <label>Start Date</label>
         <input
           className='input-form'

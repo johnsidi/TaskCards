@@ -8,6 +8,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
     dueDate: task.dueDate,
     completionDates: task.completionDates,
     category: task.category,
+    repeat: task.repeat,
   });
 
   const submitHandler = async (e) => {
@@ -19,6 +20,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
       startDate: editedTask.startDate,
       dueDate: editedTask.dueDate,
       category: editedTask.category,
+      repeat: editedTask.repeat,
     });
   };
 
@@ -46,7 +48,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 className='input-form'
                 onChange={(e) => {
                   setEditedTask({
-                    ...task,
+                    ...editedTask,
                     category: e.target.value,
                   });
                 }}
@@ -54,6 +56,24 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 type='text'
               />
               <br />
+              <label>Repeat</label>
+              <select
+                className='input-form'
+                onChange={(e) => {
+                  setEditedTask({ ...editedTask, repeat: e.target.value });
+                }}
+                value={editedTask.repeat}
+                type='text'
+              >
+                <option value=''>--Please choose an option--</option>
+                <option value='none' selected>
+                  none
+                </option>
+                <option value='daily'>daily</option>
+                <option value='weekly'>weekly</option>
+                <option value='monthly'>monthly</option>
+                <option value='annually'>annually</option>
+              </select>
 
               <label>Start Date</label>
               <input

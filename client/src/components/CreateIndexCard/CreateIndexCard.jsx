@@ -78,9 +78,9 @@ function CreateIndexCard({ tasks, cardSize }) {
   let styles = {};
   if (cardSize === '360 123') {
     styles = StyleSheet.create({
-      body: {
+      title: {
         fontFamily: 'Roboto',
-        fontSize: 10,
+        fontSize: 11,
         fontStyle: 'normal',
         marginLeft: 10,
         marginRight: -10,
@@ -94,15 +94,24 @@ function CreateIndexCard({ tasks, cardSize }) {
 
         marginLeft: 10,
         marginRight: -10,
-        marginTop: 10,
+        marginTop: 5,
         marginBottom: 0,
         color: 'grey',
+      },
+      metadata: {
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontStyle: 'normal',
+        marginLeft: 10,
+        marginRight: -10,
+        marginTop: 5,
+        color: 'black',
       },
     });
   } else {
     //for index card printing
     styles = StyleSheet.create({
-      body: {
+      title: {
         fontFamily: 'Roboto',
         fontSize: 13,
         fontStyle: 'normal',
@@ -113,14 +122,23 @@ function CreateIndexCard({ tasks, cardSize }) {
       },
       label: {
         fontFamily: 'Roboto',
-        fontSize: 13,
+        fontSize: 10,
         fontStyle: 'bold',
 
         marginLeft: 30,
         marginRight: 60,
-        marginTop: 20,
+        marginTop: 5,
         marginBottom: 1,
         color: 'grey',
+      },
+      metadata: {
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontStyle: 'normal',
+        marginLeft: 10,
+        marginRight: -10,
+        marginTop: 5,
+        color: 'black',
       },
     });
   }
@@ -145,7 +163,7 @@ function CreateIndexCard({ tasks, cardSize }) {
               size={passedSize}
               orientation='landscape'
             >
-              <Text key={atask._id} style={styles.body}>
+              <Text key={atask._id} style={styles.title}>
                 {/* {'Task: ' + atask.title + '\n\n'} */}
                 {/* the tasks are sorted my creation date, the latest first - I
                 want the index of the original array, the latest task has the
@@ -157,26 +175,32 @@ function CreateIndexCard({ tasks, cardSize }) {
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Category:
-                <Text key={atask._id} style={styles.body}>
+                <Text key={atask._id} style={styles.metadata}>
                   {' ' + atask.category}
                 </Text>
               </Text>
               <Text key={atask._id} style={styles.label}>
+                Repeat:
+                <Text key={atask._id} style={styles.metadata}>
+                  {' ' + atask.repeat}
+                </Text>
+              </Text>
+              <Text key={atask._id} style={styles.label}>
                 Start date:
-                <Text key={atask._id} style={styles.body}>
+                <Text key={atask._id} style={styles.metadata}>
                   {' ' + atask.startDate}
                 </Text>
               </Text>
 
               <Text key={atask._id} style={styles.label}>
                 Due date:
-                <Text key={atask._id} style={styles.body}>
+                <Text key={atask._id} style={styles.metadata}>
                   {' ' + atask.dueDate}
                 </Text>
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Creation date:
-                <Text key={atask._id} style={styles.body}>
+                <Text key={atask._id} style={styles.metadata}>
                   {' ' + moment(atask.createdAt).format('YYYY-MM-DD')}
                 </Text>
               </Text>

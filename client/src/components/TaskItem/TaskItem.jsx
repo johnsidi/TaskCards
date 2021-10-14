@@ -38,7 +38,13 @@ function TaskItem({
           {/* {console.log('date created', task.createdAt)} */}
           <b>Creation date:</b> {moment(task.createdAt).format('YYYY-MM-DD')}
         </p>
-
+        {task.repeat ? (
+          <p>
+            <b>Repeat:</b> {task.repeat}
+          </p>
+        ) : (
+          ''
+        )}
         {task.dueDate ? (
           <p>
             <b>Due date:</b> {task.dueDate}

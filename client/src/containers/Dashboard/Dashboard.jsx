@@ -9,7 +9,7 @@ import './Dashboard.css';
 
 function Dashboard({ searchString, savedSearchHandler, filterString }) {
   const [tasks, setTasks] = useState([]);
-  const [cardSize, setCardSize] = useState('216 360');
+  const [cardSize, setCardSize] = useState('360 123');
   const [searchFilteredTasks, setSearchFilteredTasks] = useState([]);
   const [tasksCopy, setTasksCopy] = useState([]);
 
@@ -82,6 +82,8 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
           title: editedTask.title,
           startDate: editedTask.startDate,
           dueDate: editedTask.dueDate,
+          category: editedTask.category,
+          repeat: editedTask.repeat,
         };
       }
       return task;
@@ -144,7 +146,9 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
             >
               <option value=''>--Please choose an option--</option>
               <option value='A4'>A4</option>
-              <option value='A7'>A7</option>
+              <option value='A7' selected>
+                A7
+              </option>
               <option value='216 360'>3" x 5"</option>
               <option value='360 123'>T-card size 2 long</option>
               //for printing using Silhouette
