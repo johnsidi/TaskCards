@@ -74,28 +74,56 @@ function CreateIndexCard({ tasks, cardSize }) {
     ],
   });
 
-  const styles = StyleSheet.create({
-    body: {
-      fontFamily: 'Roboto',
-      fontSize: 13,
-      fontStyle: 'normal',
-      marginLeft: 30,
-      marginRight: 60,
-      marginTop: 10,
-      color: 'black',
-    },
-    label: {
-      fontFamily: 'Roboto',
-      fontSize: 13,
-      fontStyle: 'bold',
+  // for T-cards size 2 logn slips
+  let styles = {};
+  if (cardSize === '360 123') {
+    styles = StyleSheet.create({
+      body: {
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontStyle: 'normal',
+        marginLeft: 10,
+        marginRight: -10,
+        marginTop: 20,
+        color: 'black',
+      },
+      label: {
+        fontFamily: 'Roboto',
+        fontSize: 10,
+        fontStyle: 'bold',
 
-      marginLeft: 30,
-      marginRight: 60,
-      marginTop: 20,
-      marginBottom: 1,
-      color: 'grey',
-    },
-  });
+        marginLeft: 10,
+        marginRight: -10,
+        marginTop: 10,
+        marginBottom: 0,
+        color: 'grey',
+      },
+    });
+  } else {
+    //for index card printing
+    styles = StyleSheet.create({
+      body: {
+        fontFamily: 'Roboto',
+        fontSize: 13,
+        fontStyle: 'normal',
+        marginLeft: 30,
+        marginRight: 60,
+        marginTop: 10,
+        color: 'black',
+      },
+      label: {
+        fontFamily: 'Roboto',
+        fontSize: 13,
+        fontStyle: 'bold',
+
+        marginLeft: 30,
+        marginRight: 60,
+        marginTop: 20,
+        marginBottom: 1,
+        color: 'grey',
+      },
+    });
+  }
 
   return (
     <div className='indexCard'>
@@ -125,13 +153,7 @@ function CreateIndexCard({ tasks, cardSize }) {
                 - [ ] it is better to become optional in the future
                 it is better not to delete any task in order for the ID to be unique */}
                 {/* {'ID: ' + */}
-                {atask.ticket.toString() +
-                  ' ' +
-                  //' #' +
-                  // atask.category +
-                  // ' - ' +
-                  atask.title +
-                  '\n\n'}
+                {atask.ticket.toString() + ' ' + atask.title + '\n\n'}
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Category:

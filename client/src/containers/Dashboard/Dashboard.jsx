@@ -146,9 +146,9 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
               <option value='A4'>A4</option>
               <option value='A7'>A7</option>
               <option value='216 360'>3" x 5"</option>
-              {/* <option value='360 123'>T-card size 2 long</option> */}
+              <option value='360 123'>T-card size 2 long</option>
               //for printing using Silhouette
-              <option value='360 360'>"5 x 5 - Silhouette printing"</option>
+              <option value='360 360'>5" x 5" - Silhouette printing"</option>
             </select>
           </div>
         </div>
