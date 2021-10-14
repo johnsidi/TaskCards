@@ -3,12 +3,15 @@ import ApiService from '../../ApiService';
 import TaskForm from '../../components/TaskForm/TaskForm';
 import TaskList from '../../components/TaskList/TaskList.jsx';
 import CreateIndexCard from '../../components/CreateIndexCard/CreateIndexCard.jsx';
+import Sidebar from '../../components/Sidebar/Sidebar.jsx';
+
 import './Dashboard.css';
 
-function Dashboard({ searchString }) {
+function Dashboard({ searchString, tagFilterHandler, filterString }) {
   const [tasks, setTasks] = useState([]);
   const [cardSize, setCardSize] = useState('216 360');
   const [filteredTasks, setFilteredTasks] = useState([]);
+  // const [filterString, setFilterString] = useState('');
 
   async function fetchTasks() {
     const tasksList = await ApiService.getTasks();
@@ -88,6 +91,7 @@ function Dashboard({ searchString }) {
 
   return (
     <div className='dashboard'>
+      <Sidebar tagFilterHandler={tagFilterHandler} />
       <div className='tasks'>
         <div className='totalTasks'>
           Total tasks:{' '}

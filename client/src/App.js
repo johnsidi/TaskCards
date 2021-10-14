@@ -3,15 +3,21 @@ import React, { useState } from 'react';
 import searchIcon from './assets/search.svg';
 
 import Dashboard from './containers/Dashboard/Dashboard';
-import Sidebar from './components/Sidebar/Sidebar';
 
 function App() {
   const [searchString, setSearchString] = useState('');
 
+  const tagFilterHandler = async (tag) => {
+    // console.log('tag', tag);
+    // return '1';
+
+    setSearchString(tag);
+  };
+  console.log('tagFilterHandler', typeof tagFilterHandler);
+
   return (
     <div className='App'>
       <header>
-        <Sidebar />
         <div className='appName'>TaskCards</div>
         <div className='navbar_search'>
           <img
@@ -31,7 +37,10 @@ function App() {
           ></input>
         </div>
       </header>
-      <Dashboard searchString={searchString} />
+      <Dashboard
+        searchString={searchString}
+        tagFilterHandler={tagFilterHandler}
+      />
       <footer>
         John Sidiropoulos <br /> <br /> Solo project for Codeworks - August 2021
       </footer>

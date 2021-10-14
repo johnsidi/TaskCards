@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import './Sidebar.css';
 
-function Sidebar() {
+function Sidebar({ setFilterString, tagFilterHandler }) {
   const [sidebar, setSidebar] = useState(false);
   const showSidebar = () => setSidebar(!sidebar);
 
@@ -12,15 +12,28 @@ function Sidebar() {
         <div></div>
       </button>
       <div className='sidebarItems'>
-        <ul onClick={showSidebar}>
+        {/* <ul onClick={showSidebar}> */}
+        <ul>
           <li>
-            <a href=''>All tasks</a>
+            {/* <a href='' onClick={setFilterString}> */}
+            <a href=''>All tasks </a>
           </li>
           <li>
             <a href=''>Active tasks</a>
           </li>
           <li>
             <a href=''>Completed tasks</a>
+          </li>
+          <li>
+            <p
+              onClick={() => {
+                console.log('tagFilterHandler', typeof tagFilterHandler);
+                console.log('tagFilterHandler', tagFilterHandler);
+                tagFilterHandler('#TaskCards');
+              }}
+            >
+              Tag: TaskCards tasks
+            </p>
           </li>
         </ul>
       </div>
