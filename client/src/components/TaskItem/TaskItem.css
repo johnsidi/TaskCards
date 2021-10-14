@@ -10,6 +10,14 @@
   transform: scale(2);
   padding: 10px;
 }
+/* it does not work */
+.buttonContainer > input:checked {
+  background-color: orange;
+}
+
+.p {
+  font-size: 10px;
+}
 .taskContent {
   align-items: center;
 

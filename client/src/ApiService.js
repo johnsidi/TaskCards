@@ -29,8 +29,8 @@ const createTask = async (taskMetadata) => {
 const deleteTask = async (id) => {
   await fetch(`${BASE_URL}/${id}`, {
     method: 'DELETE',
-    headers: {"Content-Type": 'application/json'}
+    headers: { 'Content-Type': 'application/json' },
   });
-}
+};
 
 export default { getTasks, createTask, deleteTask };

@@ -4,16 +4,24 @@ import React from 'react';
 function TaskItem({ task, deleteHandler }) {
   return (
     <div className='taskContent'>
-      <input type='checkbox' id={task._id} className='printCheckbox'></input>
+      <label class='buttonContainer'>
+        
+        <input type='checkbox' id={task._id} className='printCheckbox'></input>
+        <span class='checkmark'></span>
+      </label>
       <div className='title'>
         <h3 id={task._id}>{task.title}</h3>
+        <p>Start date: {task.startDate}</p>
+        <p>Due date: {task.startDate}</p>
+        <p>Creation date: {task.startDate}</p>
       </div>
       <div className='taskDelete'>
         <button
           onClick={() => deleteHandler(task._id)}
           className='deleteButton'
         >
-          <svg className='trashIcon'
+          <svg
+            className='trashIcon'
             xmlns='http://www.w3.org/2000/svg'
             viewBox='0 0 50 50'
             width='30'

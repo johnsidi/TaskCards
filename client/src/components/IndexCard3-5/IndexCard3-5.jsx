@@ -23,12 +23,13 @@ function IndexCard3by5({ tasks }) {
   ]);
 
   function checkBoxPicks() {
-    // const checkedItems = document.getElementsByClassName("printCheckbox");
+    // const checkChoices = document.getElementsByClassName('printCheckbox');
+    // console.log('checkedItems', checkChoices);
 
-    // let idsOfcheckedTasks = checkedItems
+    // let idsOfcheckedTasks = checkChoices
     //   .filter((task) => task.checked)
     //   .map((checkedTask) => checkedTask.id);
-    // console.log("ids", idsOfcheckedTasks);
+    // // console.log('ids', idsOfcheckedTasks);
 
     let idsOfcheckedTasks = [];
     const checkChoices = document.getElementsByClassName('printCheckbox');
@@ -45,12 +46,7 @@ function IndexCard3by5({ tasks }) {
       .map((id) => tasks.filter((task) => task._id === id))
       .flat();
     console.log('checked', theCheckedItems);
-    // setTasksForPrinting()
-    //   setTasksForPrinting((tasksForPrinting) => [
-    //     ...tasksForPrinting,
-    //     theCheckedItems.map(item => {...item, title: item.title, startDate: item.startDate})
-    //   ]);
-    // }
+
     setTasksForPrinting(theCheckedItems);
   }
 
@@ -58,6 +54,7 @@ function IndexCard3by5({ tasks }) {
     body: {
       fontsize: 12,
       color: 'grey',
+      fontFamily: 'Helvetica',
     },
     label: {
       fontsize: 12,
@@ -69,7 +66,12 @@ function IndexCard3by5({ tasks }) {
       <PDFViewer showToolbar='true' width='500' height='400'>
         <Document>
           {tasksForPrinting.map((atask) => (
-            <Page key={atask._id} size='A7' orientation='landscape'>
+            <Page
+              style={{ margin: 5, justifyContent: 'space-around' }}
+              key={atask._id}
+              size='A7'
+              orientation='landscape'
+            >
               <Text key={atask._id} style={styles.label}>
                 Title:
                 <Text key={atask._id} style={styles.body}>

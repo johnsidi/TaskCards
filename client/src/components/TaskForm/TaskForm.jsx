@@ -31,7 +31,6 @@ function TaskForm({ createHandler }) {
         <label>Start Date</label>
         <input
           className='input-form'
-          required
           onChange={(e) => {
             setTask({ ...task, startDate: e.target.value });
           }}
@@ -43,7 +42,6 @@ function TaskForm({ createHandler }) {
         <label>Due Date</label>
         <input
           className='input-form'
-          required
           onChange={(e) => {
             setTask({ ...task, dueDate: e.target.value });
           }}

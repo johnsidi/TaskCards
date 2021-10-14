@@ -26,7 +26,7 @@ exports.addTask = async (req, res) => {
 exports.deleteTask = async (req, res) => {
   const { id } = req.params;
   try {
-    await Task.findByIdAndRemove(id);
+    await Task.findByIdAndDelete(id);
     res.status(204).end();
   } catch (error) {
     console.error('Delete task error', error);

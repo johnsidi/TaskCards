@@ -25,6 +25,7 @@ function Dashboard() {
 
   const deleteHandler = async (id) => {
     await ApiService.deleteTask(id);
+    console.log('delete handler id', id)
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
@@ -37,10 +38,10 @@ function Dashboard() {
       </div>
 
       <div className='form'>
-        <TaskForm createHandler={createHandler} />
         <div className='indexCard'>
           {tasks.length ? <IndexCard3by5 tasks={tasks} /> : null}
         </div>
+        <TaskForm createHandler={createHandler} />
       </div>
     </div>
   );

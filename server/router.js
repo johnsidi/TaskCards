@@ -4,6 +4,6 @@ const tasks = require('./controllers/taskCon');
 
 router.get('/tasks', tasks.getTasks);
 router.post('/tasks', tasks.addTask);
-router.post('/tasks/:id', tasks.deleteTask);
+router.delete('/tasks/:id', tasks.deleteTask);
 
 module.exports = router;
