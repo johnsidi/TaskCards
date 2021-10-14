@@ -6,7 +6,7 @@ function TaskItem({ task }) {
     <div className='taskContent'>
       <input type='checkbox' id={task._id} className='printCheckbox'></input>
       <div className='title'>
-        <h3>{task.title}</h3>
+        <h3 id={task._id}>{task.title}</h3>
       </div>
     </div>
   );
