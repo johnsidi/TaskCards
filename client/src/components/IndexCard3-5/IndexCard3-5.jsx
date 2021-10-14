@@ -1,4 +1,6 @@
 import React from 'react';
+import moment from 'moment';
+
 import {
   Page,
   Text,
@@ -15,7 +17,8 @@ function IndexCard3by5({ tasks }) {
   const [tasksForPrinting, setTasksForPrinting] = useState([
     {
       title: 'select one or more tasks for printing and click on the button',
-      startDate: 'now',
+      startDate: '',
+      dueDate: '',
     },
   ]);
 
@@ -54,10 +57,10 @@ function IndexCard3by5({ tasks }) {
   const styles = StyleSheet.create({
     body: {
       fontsize: 12,
+      color: 'grey',
     },
     label: {
       fontsize: 12,
-      color: 'grey',
     },
   });
 
@@ -70,13 +73,24 @@ function IndexCard3by5({ tasks }) {
         <Document>
           {tasksForPrinting.map((atask) => (
             <Page key={atask._id} size='A7' orientation='landscape'>
-              <Text style={styles.label}>Title: </Text>
-              {/* {console.log("task for printing", taskForPrinting[0])} */}
-              <Text style={styles.body}>{atask.title}</Text>
-              <Text style={styles.label}>Start date: </Text>
-              <Text style={styles.body}> {atask.startDate}</Text>
-              <Text style={styles.label}>Due date: </Text>
-              <Text style={styles.body}> {atask.dueDate}</Text>
+              <Text style={styles.label}>
+                Title:
+                <Text style={styles.body}>{' ' + atask.title}</Text>
+              </Text>
+              <Text style={styles.label}>
+                Start date:
+                <Text style={styles.body}>{' ' + atask.startDate}</Text>
+              </Text>
+              <Text style={styles.label}>
+                Due date:
+                <Text style={styles.body}>{' ' + atask.dueDate}</Text>
+              </Text>
+              <Text style={styles.label}>
+                Creation date:
+                <Text style={styles.body}>
+                  {' ' + moment(atask.createdAt).format('YYYY-MM-DD')}
+                </Text>
+              </Text>
             </Page>
           ))}
         </Document>
