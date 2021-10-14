@@ -76,7 +76,7 @@ function IndexCard3by5({ tasks }) {
               <Text style={styles.label}>Start date: </Text>
               <Text style={styles.body}> {atask.startDate}</Text>
               <Text style={styles.label}>Due date: </Text>
-              <Text style={styles.body}> {atask.startDate}</Text>
+              <Text style={styles.body}> {atask.dueDate}</Text>
             </Page>
           ))}
         </Document>
