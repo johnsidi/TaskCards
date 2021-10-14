@@ -63,8 +63,9 @@ function IndexCard3by5({ tasks }) {
 
   return (
     <div className='indexCard'>
-      <button onClick={checkBoxPicks}>Print selected tasks</button>
-      {console.log('tasks3', tasks)}
+      <button type='button' class='button-print' onClick={checkBoxPicks}>
+        Print selected tasks
+      </button>
       <PDFViewer showToolbar='true' width='500' height='400'>
         <Document>
           {tasksForPrinting.map((atask) => (

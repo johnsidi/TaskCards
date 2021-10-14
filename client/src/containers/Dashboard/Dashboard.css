@@ -1,19 +1,28 @@
-.dashboard{
+.dashboard {
   display: flex;
   flex-direction: row;
 }
 
-.tasks{
+.tasks {
   background-color: white;
   flex: 7;
   padding: 1rem;
 }
 
-.form{
-
+.form {
   background-color: white;
   flex: 3;
   padding: 1rem;
-
 }
 
+.form h3 {
+  padding: 0.5rem;
+}
+.button-print {
+  width: 75%;
+  height: 2rem;
+  margin: 1.5rem;
+  padding: 0.2rem;
+  border-radius: 5px;
+  background-color: orange;
+}
