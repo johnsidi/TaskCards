@@ -1,5 +1,6 @@
-.printCheckbox {
-  display: inline-flex;
+.printCheckbox,
+.doneCheckbox {
+  display: inline-block;
   margin-top: 0.3rem;
   overflow: hidden;
   /* Double-sized Checkboxes */

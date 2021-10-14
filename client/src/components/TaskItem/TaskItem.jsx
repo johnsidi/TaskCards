@@ -88,6 +88,10 @@ function TaskItem({ task, deleteHandler, editHandler }) {
           toggleModal={toggleModal}
         />
       </div>
+      <label class='doneContainer'>
+        <input type='checkbox' id={task._id} className='doneCheckbox'></input>
+        <span class='checkmark'></span>
+      </label>
     </div>
   );
 }
