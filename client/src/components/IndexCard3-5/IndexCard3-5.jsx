@@ -66,28 +66,34 @@ function IndexCard3by5({ tasks }) {
 
   return (
     <div className='indexCard'>
-      <button type='button' class='button-print' onClick={checkBoxPicks}>
+      <button type='button' className='button-print' onClick={checkBoxPicks}>
         Print selected tasks
       </button>
       <PDFViewer showToolbar='true' width='500' height='400'>
         <Document>
           {tasksForPrinting.map((atask) => (
             <Page key={atask._id} size='A7' orientation='landscape'>
-              <Text style={styles.label}>
+              <Text key={atask._id} style={styles.label}>
                 Title:
-                <Text style={styles.body}>{' ' + atask.title}</Text>
+                <Text key={atask._id} style={styles.body}>
+                  {' ' + atask.title}
+                </Text>
               </Text>
-              <Text style={styles.label}>
+              <Text key={atask._id} style={styles.label}>
                 Start date:
-                <Text style={styles.body}>{' ' + atask.startDate}</Text>
+                <Text key={atask._id} style={styles.body}>
+                  {' ' + atask.startDate}
+                </Text>
               </Text>
-              <Text style={styles.label}>
+              <Text key={atask._id} style={styles.label}>
                 Due date:
-                <Text style={styles.body}>{' ' + atask.dueDate}</Text>
+                <Text key={atask._id} style={styles.body}>
+                  {' ' + atask.dueDate}
+                </Text>
               </Text>
-              <Text style={styles.label}>
+              <Text key={atask._id} style={styles.label}>
                 Creation date:
-                <Text style={styles.body}>
+                <Text key={atask._id} style={styles.body}>
                   {' ' + moment(atask.createdAt).format('YYYY-MM-DD')}
                 </Text>
               </Text>

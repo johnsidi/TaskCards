@@ -1,12 +1,11 @@
 .printCheckBox {
   display: inline-block;
-  margin: auto;
+
+  overflow: hidden;
 }
 .taskContent {
   display: flex;
   flex-direction: row;
-  /* justify-content: flex-start; */
-
   gap: 1rem;
   padding: 0.5rem;
 }
@@ -14,4 +13,15 @@
 .taskDelete {
   display: inline-block;
   margin-left: auto;
+}
+.trashIcon {
+  background-color: white;
+  background-repeat: no-repeat;
+  /* stroke: transparent; */
+  stroke-width: 0px;
+}
+
+.deleteButton {
+  outline: 0;
+  border: 0;
 }

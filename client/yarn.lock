@@ -147,7 +147,7 @@
     "ramda" "^0.26.1"
     "svg-arc-to-cubic-bezier" "^3.2.0"
 
-"@react-pdf/renderer@^2.0.16":
+"@react-pdf/renderer@^2.0.18":
   "integrity" "sha512-gOEROOyp3YAYp6HlxjzqBGCnUorJCYW63bafdyFhV33CYPzF50scPI/By+/llsPCXKT3PtlBBcD/2Y/5Ka8wgg=="
   "resolved" "https://registry.npmjs.org/@react-pdf/renderer/-/renderer-2.0.18.tgz"
   "version" "2.0.18"
