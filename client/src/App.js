@@ -1,12 +1,15 @@
 import './App.css';
 import React from 'react';
-
+import Navbar from './components/Navbar/index';
 import Dashboard from './containers/Dashboard/Dashboard';
 
 function App() {
   return (
     <div className='App'>
-      <header>TaskCards</header>
+      <header>
+        TaskCards
+        {/* <Navbar /> */}
+      </header>
       <Dashboard />
       <footer>
         Sidiropoulos Ioannis <br /> <br /> Solo project for Codeworks - August
