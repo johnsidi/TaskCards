@@ -67,7 +67,7 @@ function IndexCard3by5({ tasks }) {
   const styles = StyleSheet.create({
     body: {
       fontFamily: 'Roboto',
-      fontSize: 16,
+      fontSize: 13,
       fontStyle: 'normal',
       // margin: 0,
       color: 'black',
@@ -75,7 +75,7 @@ function IndexCard3by5({ tasks }) {
     },
     label: {
       fontFamily: 'Roboto',
-      fontSize: 16,
+      fontSize: 13,
       fontStyle: 'bold',
 
       marginLeft: 30,
@@ -94,9 +94,9 @@ function IndexCard3by5({ tasks }) {
             <Page
               style={{
                 flexDirection: 'column',
-                justifyContent: 'end',
-                paddingVertical: '0px',
-                marginVertical: '0px',
+                // justifyContent: 'start',
+                // paddingVertical: '0px',
+                // marginVertical: '0px',
               }}
               key={atask._id}
               //a 3*5 index card in points
@@ -104,30 +104,28 @@ function IndexCard3by5({ tasks }) {
               size='A7' //better for printing
               orientation='landscape'
             >
-              <View>
+              <Text key={atask._id} style={styles.body}>
+                {' ' + atask.title + '\n\n'}
+              </Text>
+              <Text key={atask._id} style={styles.label}>
+                Start date:
                 <Text key={atask._id} style={styles.body}>
-                  {' ' + atask.title + '\n\n'}
+                  {' ' + atask.startDate}
                 </Text>
-                <Text key={atask._id} style={styles.label}>
-                  Start date:
-                  <Text key={atask._id} style={styles.body}>
-                    {' ' + atask.startDate}
-                  </Text>
-                </Text>
+              </Text>
 
-                <Text key={atask._id} style={styles.label}>
-                  Due date:
-                  <Text key={atask._id} style={styles.body}>
-                    {' ' + atask.dueDate}
-                  </Text>
+              <Text key={atask._id} style={styles.label}>
+                Due date:
+                <Text key={atask._id} style={styles.body}>
+                  {' ' + atask.dueDate}
                 </Text>
-                <Text key={atask._id} style={styles.label}>
-                  Creation date:
-                  <Text key={atask._id} style={styles.body}>
-                    {' ' + moment(atask.createdAt).format('YYYY-MM-DD')}
-                  </Text>
+              </Text>
+              <Text key={atask._id} style={styles.label}>
+                Creation date:
+                <Text key={atask._id} style={styles.body}>
+                  {' ' + moment(atask.createdAt).format('YYYY-MM-DD')}
                 </Text>
-              </View>
+              </Text>
             </Page>
           ))}
         </Document>
