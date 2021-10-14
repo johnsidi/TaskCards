@@ -26,4 +26,11 @@ const createTask = async (taskMetadata) => {
   }
 };
 
-export default { getTasks, createTask };
+const deleteTask = async (id) => {
+  await fetch(`${BASE_URL}/${id}`, {
+    method: 'DELETE',
+    headers: {"Content-Type": 'application/json'}
+  });
+}
+
+export default { getTasks, createTask, deleteTask };

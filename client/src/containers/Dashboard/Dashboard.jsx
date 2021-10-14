@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import ApiService from '../../ApiService';
 import TaskForm from '../../components/TaskForm/TaskForm';
 import TaskList from '../../components/TaskList/TaskList.jsx';
-import { usePDF, BlobProvider, PDFViewer } from '@react-pdf/renderer';
 import IndexCard3by5 from '../../components/IndexCard3-5/IndexCard3-5';
 import './Dashboard.css';
 
@@ -23,12 +22,18 @@ function Dashboard() {
     console.log('after mongoose', task);
     setTasks((prevState) => [...prevState, task]);
   };
-  console.log('tasks', tasks);
-  // const taskForPrinting = tasks;
+
+  const deleteHandler = async (id) => {
+    await ApiService.deleteTask(id);
+    setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
+  };
+
   return (
     <div className='dashboard'>
       <div className='tasks'>
-        <TaskList id='list' tasks={tasks} />
+        {tasks.length ? (
+          <TaskList id='list' tasks={tasks} deleteHandler={deleteHandler} />
+        ) : null}
       </div>
 
       <div className='form'>
