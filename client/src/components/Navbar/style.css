@@ -1,11 +1,2 @@
 
-.navbar_search{
-  height: 100%;
-  display: flex;
-  align-items: center;
-}
 
-.navbar_search_icon {
-  height: 32%;
-  margin-right: 10px;
-}

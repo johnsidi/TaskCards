@@ -5,9 +5,9 @@ import TaskList from '../../components/TaskList/TaskList.jsx';
 import CreateIndexCard from '../../components/CreateIndexCard/CreateIndexCard.jsx';
 import './Dashboard.css';
 
-function Dashboard() {
+function Dashboard({ searchString }) {
   const [tasks, setTasks] = useState([]);
-  const [cardSize, setCardSize] = useState('A4');
+  const [cardSize, setCardSize] = useState('216 360');
 
   async function fetchTasks() {
     const tasksList = await ApiService.getTasks();
@@ -26,9 +26,16 @@ function Dashboard() {
 
   const deleteHandler = async (id) => {
     await ApiService.deleteTask(id);
-    console.log('delete handler id', id);
+    // console.log('delete handler id', id);
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
+
+  useEffect(() => {
+    const results = tasks.filter((task) =>
+      task.title.toLowerCase().includes(searchString.toLowerCase())
+    );
+    setTasks(results);
+  }, [searchString]);
 
   return (
     <div className='dashboard'>

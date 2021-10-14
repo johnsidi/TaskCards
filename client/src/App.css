@@ -15,6 +15,7 @@ body {
 header {
   display: flex;
   flex-direction: row;
+  justify-items: flex-end;
   background-color: orange;
   font-size: 40px;
   padding: 1rem;
@@ -24,4 +25,16 @@ footer {
   padding: 2rem;
   background-color: orange;
   font-size: 18px;
+}
+
+.navbar_search {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.navbar_search_icon {
+  height: 32%;
+  margin-right: 10px;
 }
