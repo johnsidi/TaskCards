@@ -27,7 +27,7 @@ function TaskForm({ createHandler }) {
   return (
     <div className='form'>
       <h3>Create a New Task</h3>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={submitHandler} autocomplete='on'>
         <label>Description</label>
         <textarea
           required

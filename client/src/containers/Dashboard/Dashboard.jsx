@@ -98,6 +98,7 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
     const results = tasks.filter(
       (task) =>
         task.title.toLowerCase().includes(searchString.toLowerCase()) ||
+        task.category.toLowerCase().includes(searchString.toLowerCase()) ||
         task.ticket.toString().includes(searchString.toString())
     );
     setSearchFilteredTasks(results);
