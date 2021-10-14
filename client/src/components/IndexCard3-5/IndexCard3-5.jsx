@@ -71,7 +71,8 @@ function IndexCard3by5({ tasks }) {
             <Page
               style={{ justifyContent: 'space-between' }}
               key={atask._id}
-              size='A7'
+              //a 3*5 index card in points
+              size={[216, 360]}
               orientation='landscape'
             >
               <Text key={atask._id} style={styles.label}>
