@@ -66,10 +66,10 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 type='text'
               >
                 <option value=''>--Please choose an option--</option>
-                <option value='none' selected>
-                  none
+                <option value='none'>none</option>
+                <option value='daily' selected>
+                  daily
                 </option>
-                <option value='daily'>daily</option>
                 <option value='weekly'>weekly</option>
                 <option value='monthly'>monthly</option>
                 <option value='annually'>annually</option>

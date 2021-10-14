@@ -84,19 +84,19 @@ function CreateIndexCard({ tasks, cardSize }) {
         fontStyle: 'normal',
         marginLeft: 10,
         marginRight: -10,
-        marginTop: 20,
+        marginTop: 10,
         color: 'black',
       },
       label: {
         fontFamily: 'Roboto',
         fontSize: 10,
-        fontStyle: 'bold',
+        fontStyle: 'normal',
 
         marginLeft: 10,
         marginRight: -10,
         marginTop: 5,
         marginBottom: 0,
-        color: 'grey',
+        color: 'black',
       },
       metadata: {
         fontFamily: 'Roboto',
@@ -123,13 +123,13 @@ function CreateIndexCard({ tasks, cardSize }) {
       label: {
         fontFamily: 'Roboto',
         fontSize: 10,
-        fontStyle: 'bold',
+        fontStyle: 'normal',
 
         marginLeft: 30,
         marginRight: 60,
         marginTop: 5,
         marginBottom: 1,
-        color: 'grey',
+        color: 'black',
       },
       metadata: {
         fontFamily: 'Roboto',
