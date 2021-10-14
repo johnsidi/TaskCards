@@ -41,6 +41,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 title='ctrl + alt + n'
               />
               <br />
+              <label>Category</label>
               <input
                 className='input-form'
                 onChange={(e) => {
@@ -49,7 +50,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                     category: e.target.value,
                   });
                 }}
-                value={task.category}
+                value={editedTask.category}
                 type='text'
               />
               <br />
