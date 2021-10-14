@@ -1,18 +1,22 @@
 import React from 'react';
 import moment from 'moment';
 
+import robotoFont from '../../assets/Roboto/Roboto-Light.ttf';
+import robotoItalic from '../../assets/Roboto/Roboto-Italic.ttf';
+import robotoBold from '../../assets/Roboto/Roboto-Bold.ttf';
+
 import {
   Page,
   Text,
   PDFViewer,
   Document,
   StyleSheet,
+  Font,
 } from '@react-pdf/renderer';
+
 import { useState } from 'react';
 
 function IndexCard3by5({ tasks }) {
-  console.log('tasks1', tasks);
-
   const [tasksForPrinting, setTasksForPrinting] = useState([
     {
       title:
@@ -50,17 +54,30 @@ function IndexCard3by5({ tasks }) {
     setTasksForPrinting(theCheckedItems);
   }
 
+  Font.register({
+    family: 'Roboto',
+    fonts: [
+      { src: robotoFont },
+      { src: robotoItalic, fontStyle: 'italic' },
+      { src: robotoBold, fontStyle: 'bold' },
+    ],
+  });
+
   const styles = StyleSheet.create({
     body: {
-      fontsize: 6,
-      color: 'grey',
-      fontFamily: 'Helvetica',
-      margin: 0,
-      color: 'darkorange',
+      fontFamily: 'Roboto',
+      fontSize: 12,
+      fontStyle: 'normal',
+      // margin: 0,
+      color: 'black',
     },
     label: {
-      fontsize: 5,
+      fontFamily: 'Roboto',
+      fontSize: 12,
+      fontStyle: 'bold',
+
       margin: 10,
+      color: 'grey',
     },
   });
 
@@ -70,7 +87,7 @@ function IndexCard3by5({ tasks }) {
         <Document>
           {tasksForPrinting.map((atask) => (
             <Page
-              style={{ justifyContent: 'space-between' }}
+              style={{ justifyContent: 'start' }}
               key={atask._id}
               //a 3*5 index card in points
               // size={[320, 360]}
