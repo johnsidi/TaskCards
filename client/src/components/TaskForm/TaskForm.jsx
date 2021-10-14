@@ -28,6 +28,7 @@ function TaskForm({ createHandler }) {
           value={task.title}
           cols='40'
           rows='3'
+          accessKey='n'
         />
         <br />
 
@@ -53,7 +54,7 @@ function TaskForm({ createHandler }) {
         />
         <br />
 
-        <button className='button-form' type='submit'>
+        <button className='button-form' type='submit' accessKey='c'>
           Create Task
         </button>
       </form>

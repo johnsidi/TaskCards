@@ -65,9 +65,9 @@ function CreateIndexCard({ tasks, cardSize }) {
   }
 
   Font.register({
-    family: 'SlimExtreme',
+    family: 'Roboto',
     fonts: [
-      { src: slimExtremeSingleLineFont },
+      { src: robotoFont },
       { src: robotoItalic, fontStyle: 'italic' },
       { src: robotoBold, fontStyle: 'bold' },
     ],
@@ -75,21 +75,21 @@ function CreateIndexCard({ tasks, cardSize }) {
 
   const styles = StyleSheet.create({
     body: {
-      fontFamily: 'SlimExtreme',
-      fontSize: 16,
+      fontFamily: 'Roboto',
+      fontSize: 13,
       fontStyle: 'normal',
       marginLeft: 30,
-      marginRight: 10,
+      marginRight: 40,
       marginTop: 10,
       color: 'black',
     },
     label: {
-      fontFamily: 'SlimExtreme',
-      fontSize: 16,
-      fontStyle: 'normal',
+      fontFamily: 'Roboto',
+      fontSize: 13,
+      fontStyle: 'bold',
 
-      marginLeft: 50,
-      marginRight: 10,
+      marginLeft: 30,
+      marginRight: 40,
       marginTop: 20,
       marginBottom: 1,
       color: 'grey',
@@ -117,7 +117,9 @@ function CreateIndexCard({ tasks, cardSize }) {
               orientation='landscape'
             >
               <Text key={atask._id} style={styles.body}>
-                {'Task: ' + atask.title + '\n\n'}
+                {/* {'Task: ' + atask.title + '\n\n'} */}
+
+                {atask.title + '\n\n'}
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Start date:
@@ -142,7 +144,12 @@ function CreateIndexCard({ tasks, cardSize }) {
           ))}
         </Document>
       </PDFViewer>
-      <button type='button' className='button-print' onClick={checkBoxPicks}>
+      <button
+        type='button'
+        accessKey='p'
+        className='button-print'
+        onClick={checkBoxPicks}
+      >
         Print Selected Tasks
       </button>
     </div>

@@ -24,6 +24,7 @@ function App() {
             onChange={(e) => setSearchString(e.target.value)}
             type='text'
             placeholder='Search...'
+            accessKey='f'
           ></input>
         </div>
       </header>
