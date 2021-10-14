@@ -1,8 +1,11 @@
 import './TaskItem.css';
 import moment from 'moment';
 import React from 'react';
+import ModalEditForm from '../../components/ModalEditForm/ModalEditForm';
+import useModal from '../../useModal';
 
 function TaskItem({ task, deleteHandler, editHandler }) {
+  const { toggleModal, visible } = useModal();
   return (
     <div className='taskContent'>
       <label class='buttonContainer'>
@@ -51,7 +54,7 @@ function TaskItem({ task, deleteHandler, editHandler }) {
         </button>
       </div>
       <div className='taskEdit'>
-        <button onClick={() => editHandler(task._id)} className='editButton'>
+        <button onClick={toggleModal} className='editButton'>
           <svg
             className='editIcon'
             xmlns='http://www.w3.org/2000/svg'
@@ -68,6 +71,12 @@ function TaskItem({ task, deleteHandler, editHandler }) {
             />
           </svg>
         </button>
+        <ModalEditForm
+          task={task}
+          visible={visible}
+          editHandler={editHandler}
+          toggleModal={toggleModal}
+        />
       </div>
     </div>
   );

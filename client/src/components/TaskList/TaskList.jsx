@@ -13,7 +13,7 @@ function TaskList({ tasks, deleteHandler, editHandler }) {
   //console.log('sortedTasks', sortedTasks);
 
   return sortedTasks.map((task) => (
-    <TaskItem key={task._id} task={task} deleteHandler={deleteHandler} />
+    <TaskItem key={task._id} task={task} editHandler={editHandler} deleteHandler={deleteHandler} />
   ));
 }
 

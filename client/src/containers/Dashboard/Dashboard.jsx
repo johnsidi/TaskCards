@@ -31,7 +31,26 @@ function Dashboard({ searchString }) {
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
-  const editHandler = async (id) => {};
+  const editHandler = async (id, editedTask) => {
+    console.log('editedTaskMetadata', editedTask);
+    console.log('id', id);
+    const editedTaskList = tasks.map((task) => {
+      // if this task has the same ID as the edited task
+      if (id === task._id) {
+        //
+        return {
+          title: editedTask.title,
+          startDate: editedTask.startDate,
+          dueDate: editedTask.dueDate,
+          completionDate: editedTask.completionDate,
+        };
+      }
+      return task;
+    });
+    console.log('editedTaskList', editedTaskList);
+    setTasks(editedTaskList);
+  };
+
   useEffect(() => {
     const results = tasks.filter((task) =>
       task.title.toLowerCase().includes(searchString.toLowerCase())
@@ -54,7 +73,12 @@ function Dashboard({ searchString }) {
             deleteHandler={deleteHandler}
           />
         ) : (
-          <TaskList id='list' tasks={tasks} deleteHandler={deleteHandler} />
+          <TaskList
+            id='list'
+            tasks={tasks}
+            editHandler={editHandler}
+            deleteHandler={deleteHandler}
+          />
         )}
       </div>
       <div className='form'>
