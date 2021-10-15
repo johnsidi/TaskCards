@@ -27,7 +27,14 @@ function TaskItem({
       <span class='checkmark'></span>
       <div className='title'>
         <h3 id={task._id}>{task.ticket + ' - ' + task.title}</h3>
-        {task.category != [] ? (
+        {task.notes ? (
+          <p>
+            <b>Notes:</b> {task.notes}
+          </p>
+        ) : (
+          ''
+        )}
+        {task.category ? (
           <p>
             <b>Tags:</b> {task.category}
           </p>
@@ -54,17 +61,20 @@ function TaskItem({
         )}
         {task.startDate ? (
           <p>
-            {/* {console.log('start date', task.startDate)} */}
             <b>Start date:</b> {task.startDate}
+          </p>
+        ) : (
+          ''
+        )}
+        {task.estimatedTime ? (
+          <p>
+            <b>Estimated time:</b> {task.estimatedTime}
           </p>
         ) : (
           ''
         )}
         {task.completionDates ? (
           <p>
-            {/* {console.log('completion date', task.completionDate)} */}
-            {/* {console.log('completion date', new Date(task.completionDate))} */}
-            {/* <b>Completed:</b> {task.completionDate} */}
             <b>Completed:</b>{' '}
             {task.completionDates.map(
               (completionDate) =>

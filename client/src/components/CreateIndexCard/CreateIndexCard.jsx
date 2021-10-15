@@ -31,9 +31,11 @@ function CreateIndexCard({ tasks, cardSize }) {
     {
       title:
         'select one or more tasks for printing and click on "Print Selected Tasks"',
+      notes: '',
       startDate: '',
       dueDate: '',
       ticket: 'ticket number',
+      estimatedTime: '',
     },
   ]);
 
@@ -177,28 +179,40 @@ function CreateIndexCard({ tasks, cardSize }) {
                 {atask.ticket.toString() + ' ' + atask.title + '\n\n'}
               </Text>
               <Text key={atask._id} style={styles.label}>
+                Notes:
+                <Text key={atask._id} style={styles.metadata}>
+                  {atask.notes ? ' ' + atask.notes : ''}
+                </Text>
+              </Text>
+              <Text key={atask._id} style={styles.label}>
                 Tags:
                 <Text key={atask._id} style={styles.metadata}>
-                  {' ' + atask.category}
+                  {atask.category ? ' ' + atask.category : ''}
                 </Text>
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Repeat:
                 <Text key={atask._id} style={styles.metadata}>
-                  {' ' + atask.repeat}
+                  {atask.repeat ? ' ' + atask.repeat : ''}
                 </Text>
               </Text>
               <Text key={atask._id} style={styles.label}>
                 Start date:
                 <Text key={atask._id} style={styles.metadata}>
-                  {' ' + atask.startDate}
+                  {atask.startDate ? ' ' + atask.startDate : ''}
                 </Text>
               </Text>
 
               <Text key={atask._id} style={styles.label}>
                 Due date:
                 <Text key={atask._id} style={styles.metadata}>
-                  {' ' + atask.dueDate}
+                  {atask.dueDate ? ' ' + atask.dueDate : ''}
+                </Text>
+              </Text>
+              <Text key={atask._id} style={styles.label}>
+                Estimated time:
+                <Text key={atask._id} style={styles.metadata}>
+                  {atask.estimatedTime ? ' ' + atask.estimatedTime : ''}
                 </Text>
               </Text>
               <Text key={atask._id} style={styles.label}>
@@ -206,6 +220,9 @@ function CreateIndexCard({ tasks, cardSize }) {
                 <Text key={atask._id} style={styles.metadata}>
                   {' ' + moment(atask.createdAt).format('YYYY-MM-DD')}
                 </Text>
+              </Text>
+              <Text key={atask._id} style={styles.label}>
+                Skipped:
               </Text>
             </Page>
           ))}

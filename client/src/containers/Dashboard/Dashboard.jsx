@@ -80,10 +80,12 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
         return {
           ...task,
           title: editedTask.title,
+          notes: editedTask.notes,
           startDate: editedTask.startDate,
           dueDate: editedTask.dueDate,
           category: editedTask.category,
           repeat: editedTask.repeat,
+          estimatedTime: editedTask.estimatedTime,
         };
       }
       return task;
@@ -103,8 +105,10 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
     const results = tasks.filter(
       (task) =>
         task.title.toLowerCase().includes(searchString.toLowerCase()) ||
+        task.notes.toLowerCase().includes(searchString.toLowerCase()) ||
         task.category.toLowerCase().includes(searchString.toLowerCase()) ||
-        task.ticket.toString().includes(searchString.toString())
+        task.ticket.toString().includes(searchString.toString()) ||
+        task.estimatedTime.toString().includes(searchString.toString())
     );
     setSearchFilteredTasks(results);
   }, [searchString]);

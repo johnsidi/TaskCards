@@ -35,6 +35,14 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    estimatedTime: {
+      type: String,
+      required: false,
+    },
+    notes: {
+      type: String,
+      required: false,
+    },
   },
   { timestamps: true }
 );

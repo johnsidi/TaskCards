@@ -4,11 +4,13 @@ import ReactDOM from 'react-dom';
 function ModalEditForm({ task, editHandler, visible, toggleModal }) {
   const [editedTask, setEditedTask] = useState({
     title: task.title,
+    notes: task.notes,
     startDate: task.startDate,
     dueDate: task.dueDate,
     completionDates: task.completionDates,
     category: task.category,
     repeat: task.repeat,
+    estimatedTime: task.estimatedTime,
   });
 
   const submitHandler = async (e) => {
@@ -17,10 +19,12 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
     await editHandler(task._id, editedTask);
     setEditedTask({
       title: editedTask.title,
+      notes: editedTask.notes,
       startDate: editedTask.startDate,
       dueDate: editedTask.dueDate,
       category: editedTask.category,
       repeat: editedTask.repeat,
+      estimatedTime: editedTask.estimatedTime,
     });
   };
 
@@ -41,6 +45,16 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 rows='3'
                 accessKey='d'
                 title='ctrl + alt + n'
+              />
+              <br />
+              <label>notes</label>
+              <textarea
+                onChange={(e) => {
+                  setEditedTask({ ...editedTask, notes: e.target.value });
+                }}
+                value={editedTask.notes}
+                cols='40'
+                rows='3'
               />
               <br />
               <label>Category</label>
@@ -96,7 +110,19 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 type='date'
               />
               <br />
-
+              <label>Estimated time</label>
+              <input
+                className='input-form'
+                onChange={(e) => {
+                  setEditedTask({
+                    ...editedTask,
+                    estimatedTime: e.target.value,
+                  });
+                }}
+                value={editedTask.estimatedTime}
+                type='text'
+              />
+              <br />
               <button
                 className='button-form'
                 type='submit'

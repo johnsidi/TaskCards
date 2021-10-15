@@ -4,12 +4,14 @@ import React, { useState } from 'react';
 function TaskForm({ createHandler }) {
   const [task, setTask] = useState({
     title: '',
+    notes: '',
     startDate: '',
     dueDate: '',
     completed: false,
     completionDates: [],
     category: '',
     repeat: '',
+    estimatedTime: '',
   });
 
   const submitHandler = async (e) => {
@@ -17,12 +19,14 @@ function TaskForm({ createHandler }) {
     await createHandler(task);
     setTask({
       title: '',
+      notes: '',
       startDate: '',
       dueDate: '',
       completionDates: [],
       completed: false,
       category: '',
       repeat: '',
+      estimatedTime: '',
     });
   };
 
@@ -41,6 +45,17 @@ function TaskForm({ createHandler }) {
           rows='3'
           accessKey='d'
           title='ctrl + alt + n'
+        />
+        <br />
+        <label>Notes</label>
+        <textarea
+          required
+          onChange={(e) => {
+            setTask({ ...task, notes: e.target.value });
+          }}
+          value={task.notes}
+          cols='40'
+          rows='3'
         />
         <br />
         <label>Category</label>
@@ -93,6 +108,16 @@ function TaskForm({ createHandler }) {
         />
         <br />
 
+        <label>Estimated Time</label>
+        <input
+          className='input-form'
+          onChange={(e) => {
+            setTask({ ...task, estimatedTime: e.target.value });
+          }}
+          value={task.estimatedTime}
+          type='text'
+        />
+        <br />
         <button
           className='button-form'
           type='submit'
