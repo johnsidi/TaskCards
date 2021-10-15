@@ -57,7 +57,7 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
                 rows='3'
               />
               <br />
-              <label>Category</label>
+              <label>Tags (comma separated)</label>
               <input
                 className='input-form'
                 onChange={(e) => {

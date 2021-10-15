@@ -58,7 +58,7 @@ function TaskForm({ createHandler }) {
           rows='3'
         />
         <br />
-        <label>Category</label>
+        <label>Tags (comma separated)</label>
         <input
           className='input-form'
           onChange={(e) => {
@@ -108,7 +108,7 @@ function TaskForm({ createHandler }) {
         />
         <br />
 
-        <label>Estimated Time</label>
+        <label>Estimated time</label>
         <input
           className='input-form'
           onChange={(e) => {
