@@ -108,7 +108,7 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
         task.notes.toLowerCase().includes(searchString.toLowerCase()) ||
         task.category.toLowerCase().includes(searchString.toLowerCase()) ||
         task.ticket.toString().includes(searchString.toString()) ||
-        task.estimatedTime.toString().includes(searchString.toString())
+        task.estimatedTime.toLowerCase().includes(searchString.toLowerCase())
     );
     setSearchFilteredTasks(results);
   }, [searchString]);
