@@ -49,7 +49,6 @@ function TaskForm({ createHandler }) {
         <br />
         <label>Notes</label>
         <textarea
-          required
           onChange={(e) => {
             setTask({ ...task, notes: e.target.value });
           }}
