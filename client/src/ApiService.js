@@ -9,8 +9,6 @@ const BASE_URL =
   '.vpxhl.mongodb.net/' +
   process.env.DBname;
 
-console.log(BASE_URL);
-
 const getTasks = async () => {
   try {
     const res = await fetch(BASE_URL);
