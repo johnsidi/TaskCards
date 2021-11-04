@@ -1,13 +1,5 @@
 //const BASE_URL = 'http://localhost:3001/tasks';
-const BASE_URL =
-  'mongodb+srv://' +
-  process.env.MongoDBuser +
-  ':' +
-  process.env.MongoDBpass +
-  '@' +
-  process.env.DBcluster +
-  '.vpxhl.mongodb.net/' +
-  process.env.DBname;
+const BASE_URL = 'https://taskcards.herokuapp.com/tasks';
 
 const getTasks = async () => {
   try {
