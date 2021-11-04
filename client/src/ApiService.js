@@ -1,4 +1,15 @@
-const BASE_URL = 'http://localhost:3001/tasks';
+//const BASE_URL = 'http://localhost:3001/tasks';
+const BASE_URL =
+  'mongodb+srv://' +
+  process.env.MongoDBuser +
+  ':' +
+  process.env.MongoDBpass +
+  '@' +
+  process.env.DBcluster +
+  '.vpxhl.mongodb.net/' +
+  process.env.DBname;
+
+console.log(BASE_URL);
 
 const getTasks = async () => {
   try {
@@ -46,6 +57,5 @@ const updateTask = async (id, updatedTask) => {
     return null;
   }
 };
-
 
 export default { getTasks, createTask, deleteTask, updateTask };
