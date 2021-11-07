@@ -1,4 +1,5 @@
-const Task = require('../models/taskMod');
+const { Task } = require('../models/taskMod');
+const { User } = require('../models/taskMod');
 
 exports.getTasks = async (req, res) => {
   try {

@@ -1,6 +1,30 @@
 const mongoose = require('mongoose');
 const AutoIncrement = require('mongoose-sequence')(mongoose);
 
+const userSchema = new mongoose.Schema(
+  {
+    username: {
+      type: String,
+      required: true,
+    }, 
+    email: {
+      type: String,
+      required: true,
+    },
+    password: {
+      type: String,
+      required: true,
+    },
+    firstName: {
+      type: String,
+      required: false,
+    },
+    lastName: {
+      type: String,
+      required: false,
+    },
+  });
+
 const taskSchema = new mongoose.Schema(
   {
     title: {
@@ -49,4 +73,6 @@ const taskSchema = new mongoose.Schema(
 
 taskSchema.plugin(AutoIncrement, { inc_field: 'ticket' });
 
-module.exports = mongoose.model('Task', taskSchema);
+const Task = mongoose.model('Task', taskSchema);
+const User = mongoose.model('User', userSchema); 
+module.exports = { Task: Task, User: User}

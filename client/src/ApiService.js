@@ -1,5 +1,7 @@
-//const BASE_URL = 'http://localhost:3001/tasks';
-const BASE_URL = 'https://taskcards.herokuapp.com/tasks';
+const BASE_URL = 'http://localhost:3001/tasks';
+
+//for deployment
+//const BASE_URL = 'https://taskcards.herokuapp.com/tasks';
 
 const getTasks = async () => {
   try {
