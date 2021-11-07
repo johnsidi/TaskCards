@@ -11,7 +11,7 @@ module.exports = mongoose.connect(
     process.env.DBcluster +
     '.vpxhl.mongodb.net/' +
     process.env.DBname +
-    '?retryWrites=true&w=majorit',
+    '?retryWrites=true&w=majority',
   {
     useNewUrlParser: true,
     useUnifiedTopology: true,
