@@ -1,20 +1,24 @@
 import React, { useEffect, useState } from 'react';
+
 import ApiService from '../../ApiService';
-import TaskForm from '../../components/TaskForm/TaskForm';
-import TaskList from '../../components/TaskList/TaskList.jsx';
-import CreateIndexCard from '../../components/CreateIndexCard/CreateIndexCard.jsx';
-import Sidebar from '../../components/Sidebar/Sidebar.jsx';
+import apiServiceJWT from '../../ApiServiceJWT';
 
-import './Dashboard.css';
+import TaskForm from '../TaskForm/TaskForm';
+import TaskList from '../TaskList/TaskList.jsx';
+import CreateIndexCard from '../CreateIndexCard/CreateIndexCard.jsx';
+import Sidebar from '../Sidebar/Sidebar.jsx';
 
-function Dashboard({ searchString, savedSearchHandler, filterString }) {
+import './Home.css';
+
+function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   const [tasks, setTasks] = useState([]);
   const [cardSize, setCardSize] = useState('360 123');
   const [searchFilteredTasks, setSearchFilteredTasks] = useState([]);
   const [tasksCopy, setTasksCopy] = useState([]);
 
   async function fetchTasks() {
-    const tasksList = await ApiService.getTasks();
+    const tasksList = await apiServiceJWT.getTasks();
+    console.log('second hi');
     console.log('TaskList', tasksList);
     setTasks(tasksList);
     //I need this list in order to be able to go to
@@ -114,7 +118,7 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
   }, [searchString]);
 
   return (
-    <div className='dashboard'>
+    <div className='home'>
       <Sidebar
         tasks={tasks}
         propertyFilterHandler={propertyFilterHandler}
@@ -169,4 +173,4 @@ function Dashboard({ searchString, savedSearchHandler, filterString }) {
   );
 }
 
-export default Dashboard;
+export default Home;

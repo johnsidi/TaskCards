@@ -1,4 +1,4 @@
-const BASE_URL = 'http://localhost:3001/tasks';
+const BASE_URL = 'http://localhost:3000/tasks';
 
 //for deployment
 //const BASE_URL = 'https://taskcards.herokuapp.com/tasks';

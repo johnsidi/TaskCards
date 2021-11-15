@@ -1,6 +1,6 @@
 .sidebar {
-  position: fixed;
-  top: 15px;
+  position: absolute;
+  top: 50px;
   left: -200px;
   width: 200px;
   height: 100%;
@@ -40,7 +40,7 @@
   width: 60px;
   position: absolute;
   right: -70px;
-  background-color: orange;
+  background-color: white;
 }
 
 .hamburger:after,
