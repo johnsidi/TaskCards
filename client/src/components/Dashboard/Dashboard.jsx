@@ -4,6 +4,7 @@ import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import Logout from '../Logout/Logout';
+import Welcome from '../Welcome/Welcome';
 import Home from '../Home/Home';
 
 const Dashboard = ({ setIsAuthenticated }) => {
@@ -23,7 +24,9 @@ const Dashboard = ({ setIsAuthenticated }) => {
           path='/logout'
           element={<Logout setIsAuthenticated={setIsAuthenticated} />}
         />
-        <Route path='/' element={<Home />} />
+        <Route path='/home' element={<Home />} />
+
+        <Route path='/' element={<Welcome />} />
       </Routes>
     </div>
   );

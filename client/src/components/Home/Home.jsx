@@ -17,8 +17,10 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   const [tasksCopy, setTasksCopy] = useState([]);
 
   async function fetchTasks() {
-    const tasksList = await apiServiceJWT.getTasks();
-    console.log('second hi');
+    const accessToken = localStorage.getItem('accessToken');
+    const userID = localStorage.getItem('userID');
+    console.log('userID from fetchTasks', userID);
+    const tasksList = await apiServiceJWT.getTasks(accessToken, userID);
     console.log('TaskList', tasksList);
     setTasks(tasksList);
     //I need this list in order to be able to go to
@@ -33,7 +35,7 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   }, []);
 
   const createHandler = async (taskMetadata) => {
-    const task = await ApiService.createTask(taskMetadata);
+    const task = await apiServiceJWT.createTask(taskMetadata);
     console.log('after mongoose', task);
     setTasks((prevState) => [...prevState, task]);
     setTasksCopy((prevState) => [...prevState, task]);

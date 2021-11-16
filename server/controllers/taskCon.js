@@ -1,9 +1,14 @@
-const { Task } = require('../models/taskMod');
+const { Task, User } = require('../models/taskMod');
 
 exports.getTasks = async (req, res) => {
   try {
-    const Tasks = await Task.find();
-    res.send(Tasks);
+    const { userID } = req.params;
+    const currentUser = await User.findOne({ _id: userID });
+    const allUserTasks = await Task.find({
+      _id: { $in: currentUser.userTasks },
+    });
+    // console.log('allUserTasks', allUserTasks);
+    res.send(allUserTasks);
   } catch (error) {
     res.status(500);
     res.send(error);
@@ -11,9 +16,10 @@ exports.getTasks = async (req, res) => {
 };
 
 exports.addTask = async (req, res) => {
-  const inputReq = req.body;
+  const { metadata, userID } = req.body;
   try {
-    const addedTask = await Task.create(inputReq);
+    const addedTask = await Task.create(metadata);
+    const taskID = addedTask._id;
 
     res.status(201);
     res.send(addedTask);
@@ -36,6 +42,7 @@ exports.deleteTask = async (req, res) => {
 };
 
 exports.updateTask = async (req, res) => {
+  3;
   const { id } = req.params;
 
   const inputReq = req.body;

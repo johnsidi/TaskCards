@@ -2,14 +2,17 @@ const BASE_URL = 'http://localhost:3000'; //for the backend
 
 const apiServiceJWT = {};
 
-apiServiceJWT.getTasks = async () => {
+apiServiceJWT.getTasks = async (accessToken, userID) => {
   try {
     console.log('hi from api service');
-    const res = await fetch(BASE_URL + '/tasks', {
+    const res = await fetch(BASE_URL + '/tasks/' + userID, {
       method: 'GET',
       credentials: 'include',
       mode: 'cors',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
     });
     return await res.json();
   } catch (error) {
@@ -18,7 +21,7 @@ apiServiceJWT.getTasks = async () => {
   }
 };
 
-apiServiceJWT.createTask = async (taskMetadata) => {
+apiServiceJWT.createTask = async (accessToken, taskMetadata, userID) => {
   try {
     const res = await fetch(BASE_URL, {
       method: 'POST',
@@ -27,6 +30,7 @@ apiServiceJWT.createTask = async (taskMetadata) => {
       body: JSON.stringify(taskMetadata),
       headers: {
         'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
       },
     });
     return res.json();
@@ -80,10 +84,11 @@ apiServiceJWT.profile = (accessToken) => {
   // REMOVE-END
 };
 
-apiServiceJWT.logout = (tokenName) => {
+apiServiceJWT.logout = (tokenName, userID) => {
   // REMOVE-START
   // delete token from local storage here
   localStorage.removeItem(tokenName);
+  localStorage.removeItem(userID);
   // the following request should invalidate the token
   // return fetch(`${BASE_URL}/logout`, {
   //   method: 'POST',

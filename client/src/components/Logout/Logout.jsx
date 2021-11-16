@@ -12,7 +12,7 @@ const Logout = (props) => {
   };
 
   const removeToken = () => {
-    apiServiceJWT.logout('accessToken');
+    apiServiceJWT.logout('accessToken', 'userID');
   };
 
   const handleAuth = () => {

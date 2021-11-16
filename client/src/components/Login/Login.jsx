@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import auth from '../../utils/auth';
 import apiServiceJWT from '../../ApiServiceJWT';
-import { Navigate, useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -32,8 +32,9 @@ const Login = (props) => {
       alert(`${res.message}`);
       setState(initialState);
     } else {
-      const { accessToken } = res;
+      const { accessToken, userID } = res;
       localStorage.setItem('accessToken', accessToken);
+      localStorage.setItem('userID', userID);
       props.setIsAuthenticated(true);
       // console.log('hi');
       // return <Navigate to='/profile' />;
@@ -46,7 +47,7 @@ const Login = (props) => {
       // let location = useLocation();
       // auth.login(() => <Navigate to='/profile' state={{ from: location }} />);
       //auth.login(() => navigate('/profile')); //violates rules of hooks
-      navigate('/');
+      navigate('/home');
     }
     // REMOVE-END
   };
