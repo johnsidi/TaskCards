@@ -18,7 +18,11 @@ exports.getTasks = async (req, res) => {
 exports.addTask = async (req, res) => {
   const { userID } = req.params;
   const taskMetadata = req.body;
-  console.log('taskMetadata', taskMetadata);
+  // const taskMetadataAndUser = Object.defineProperty(taskMetadata, 'users', {
+  //   value: [userID],
+  // });
+  taskMetadata['users'] = [userID];
+  // console.log('taskMetadata', taskMetadataAndUser);
   try {
     const addedTask = await Task.create(taskMetadata);
     const taskID = addedTask._id;

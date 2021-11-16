@@ -39,7 +39,7 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
       taskMetadata,
       userID
     );
-    console.log('after mongoose', task);
+    //console.log('after mongoose', task);
     setTasks((prevState) => [...prevState, task]);
     setTasksCopy((prevState) => [...prevState, task]);
   };

@@ -70,11 +70,19 @@ const taskSchema = new mongoose.Schema(
       type: String,
       required: false,
     },
+    users: {
+      type: Array,
+      required: false,
+    },
   },
   { timestamps: true }
 );
 
-taskSchema.plugin(AutoIncrement, { inc_field: 'ticket' });
+taskSchema.plugin(AutoIncrement, {
+  id: 'task_seq',
+  inc_field: 'ticket',
+  reference_fields: ['users'],
+});
 
 const Task = mongoose.model('Task', taskSchema);
 const User = mongoose.model('User', userSchema);
