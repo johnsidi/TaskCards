@@ -15,10 +15,9 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   const [cardSize, setCardSize] = useState('360 123');
   const [searchFilteredTasks, setSearchFilteredTasks] = useState([]);
   const [tasksCopy, setTasksCopy] = useState([]);
-
+  const accessToken = localStorage.getItem('accessToken');
+  const userID = localStorage.getItem('userID');
   async function fetchTasks() {
-    const accessToken = localStorage.getItem('accessToken');
-    const userID = localStorage.getItem('userID');
     console.log('userID from fetchTasks', userID);
     const tasksList = await apiServiceJWT.getTasks(accessToken, userID);
     console.log('TaskList', tasksList);
@@ -35,7 +34,11 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   }, []);
 
   const createHandler = async (taskMetadata) => {
-    const task = await apiServiceJWT.createTask(taskMetadata);
+    const task = await apiServiceJWT.createTask(
+      accessToken,
+      taskMetadata,
+      userID
+    );
     console.log('after mongoose', task);
     setTasks((prevState) => [...prevState, task]);
     setTasksCopy((prevState) => [...prevState, task]);

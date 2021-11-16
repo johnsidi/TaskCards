@@ -16,11 +16,16 @@ exports.getTasks = async (req, res) => {
 };
 
 exports.addTask = async (req, res) => {
-  const { metadata, userID } = req.body;
+  const { userID } = req.params;
+  const taskMetadata = req.body;
+  console.log('taskMetadata', taskMetadata);
   try {
-    const addedTask = await Task.create(metadata);
+    const addedTask = await Task.create(taskMetadata);
     const taskID = addedTask._id;
-
+    await User.findOneAndUpdate(
+      { _id: userID },
+      { $push: { userTasks: taskID } }
+    );
     res.status(201);
     res.send(addedTask);
   } catch (error) {

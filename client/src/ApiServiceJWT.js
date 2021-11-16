@@ -23,7 +23,7 @@ apiServiceJWT.getTasks = async (accessToken, userID) => {
 
 apiServiceJWT.createTask = async (accessToken, taskMetadata, userID) => {
   try {
-    const res = await fetch(BASE_URL, {
+    const res = await fetch(BASE_URL + '/tasks/' + userID, {
       method: 'POST',
       credentials: 'include',
       mode: 'cors',
