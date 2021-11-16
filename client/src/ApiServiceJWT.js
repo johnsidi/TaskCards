@@ -11,6 +11,7 @@ apiServiceJWT.getTasks = async (accessToken, userID) => {
     console.log('hi from api service');
     const res = await fetch(BASE_URL + '/tasks/' + userID, {
       method: 'GET',
+      mode: 'cors',
       credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
@@ -28,6 +29,7 @@ apiServiceJWT.createTask = async (accessToken, taskMetadata, userID) => {
   try {
     const res = await fetch(BASE_URL + '/tasks/' + userID, {
       method: 'POST',
+      mode: 'cors',
       credentials: 'include',
       body: JSON.stringify(taskMetadata),
       headers: {
@@ -46,6 +48,8 @@ apiServiceJWT.deleteTask = async (accessToken, userID, id) => {
   try {
     const res = await fetch(`${BASE_URL}/tasks/${userID}/${id}`, {
       method: 'DELETE',
+      mode: 'cors',
+      credentials: 'include',
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${accessToken}`,
@@ -62,6 +66,7 @@ apiServiceJWT.register = (user) => {
   // REMOVE-START
   return fetch(`${BASE_URL}/register`, {
     method: 'POST',
+    mode: 'cors',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
@@ -75,6 +80,7 @@ apiServiceJWT.login = (user) => {
   // REMOVE-START
   return fetch(`${BASE_URL}/login`, {
     method: 'POST',
+    mode: 'cors',
     credentials: 'include',
     headers: { 'Content-Type': 'application/json' },
     body: JSON.stringify(user),
@@ -88,6 +94,7 @@ apiServiceJWT.profile = (accessToken) => {
   // REMOVE-START
   return fetch(`${BASE_URL}/me`, {
     method: 'GET',
+    mode: 'cors',
     credentials: 'include',
     headers: {
       'Content-Type': 'application/json',
