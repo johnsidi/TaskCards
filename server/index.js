@@ -8,16 +8,16 @@ const app = express();
 //for the server/backend
 const localPort = 3000;
 
-//for the requests from the TaskCards - from the browser
-const corsConfig = {
-  // REMOVE-START
-  origin: 'http://localhost:3001',
-  credentials: true,
-  // REMOVE-END
-};
+// //for the requests from the TaskCards - from the browser
+// const corsConfig = {
+//   // REMOVE-START
+//   origin: 'http://localhost:3001',
+//   credentials: true,
+//   // REMOVE-END
+// };
 
-app.use(cors(corsConfig));
-//app.use(cors());
+// app.use(cors(corsConfig));
+app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);
