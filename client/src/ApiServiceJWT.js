@@ -40,6 +40,23 @@ apiServiceJWT.createTask = async (accessToken, taskMetadata, userID) => {
   }
 };
 
+apiServiceJWT.deleteTask = async (accessToken, userID, id) => {
+  try {
+    const res = await fetch(`${BASE_URL}/tasks/${userID}/${id}`, {
+      method: 'DELETE',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return res;
+  } catch (error) {
+    console.log('Error', error); // eslint-disable-line no-console
+    return null;
+  }
+};
+
 apiServiceJWT.register = (user) => {
   // REMOVE-START
   return fetch(`${BASE_URL}/register`, {

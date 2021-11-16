@@ -35,9 +35,12 @@ exports.addTask = async (req, res) => {
 };
 
 exports.deleteTask = async (req, res) => {
-  const { id } = req.params;
+  const { id, userID } = req.params;
+  console.log('id', id);
+  console.log('userID', userID);
   try {
     await Task.findByIdAndDelete(id);
+    await User.findOneAndUpdate({ _id: userID }, { $pull: { userTasks: id } });
     res.status(204).end();
   } catch (error) {
     console.error('Delete task error', error);

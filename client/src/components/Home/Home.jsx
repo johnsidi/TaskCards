@@ -45,7 +45,7 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   };
 
   const deleteHandler = async (id) => {
-    await ApiService.deleteTask(id);
+    await apiServiceJWT.deleteTask(accessToken, userID, id);
     // console.log('delete handler id', id);
     setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
     setTasksCopy((prevTasks) => prevTasks.filter((task) => task._id !== id));
