@@ -1,7 +1,7 @@
 //const BASE_URL = 'http://localhost:3000'; //for the backend
 
 //for deployment
-const BASE_URL = 'https://taskcards.herokuapp.com';
+const BASE_URL = 'https://taskcardscors.herokuapp.com/taskcards.herokuapp.com';
 
 const apiServiceJWT = {};
 
