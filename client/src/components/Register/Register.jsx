@@ -6,6 +6,7 @@ import { useNavigate } from 'react-router-dom';
 const initialState = {
   email: '',
   password: '',
+  username: '',
   firstName: '',
   lastName: '',
 };
@@ -27,8 +28,8 @@ const Register = (props) => {
     // Check the client-session to see how to handle redirects
     // REMOVE-START
     e.preventDefault();
-    const { email, password, firstName, lastName } = state;
-    const user = { email, password, firstName, lastName };
+    const { email, password, username, firstName, lastName } = state;
+    const user = { email, password, username, firstName, lastName };
     const res = await apiServiceJWT.register(user);
 
     if (res.error) {
@@ -38,7 +39,7 @@ const Register = (props) => {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
       props.setIsAuthenticated(true);
-      navigate('/home');
+      navigate('/profile');
     }
     // REMOVE-END◊
   };
@@ -68,14 +69,21 @@ const Register = (props) => {
         />
         <input
           type='text'
-          placeholder='Name'
+          placeholder='User Name'
+          name='username'
+          value={state.username}
+          onChange={handleChange}
+        />
+        <input
+          type='text'
+          placeholder='Fist Name'
           name='firstName'
           value={state.firstName}
           onChange={handleChange}
         />
         <input
           type='text'
-          placeholder='Nameson'
+          placeholder='Last Name'
           name='lastName'
           value={state.lastName}
           onChange={handleChange}

@@ -35,7 +35,11 @@ const Profile = () => {
     <div>
       <h2>My Profile</h2>
       <h3>
-        Welcome back, {firstName} {lastName}! Everything is fine.
+        Welcome back, {firstName} {lastName}! <br />
+        >. View your tasks or create new{' '}
+        <a href='http://taskcards.netlify.app/home'>here</a>
+        View your tasks or create new{' '}
+        <a href='http://localhost:3001/home'>here</a>
       </h3>
     </div>
   );

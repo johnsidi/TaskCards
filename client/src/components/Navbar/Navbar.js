@@ -2,6 +2,7 @@ import React from 'react';
 import { Link, Outlet } from 'react-router-dom';
 import './Navbar.css';
 import TaskCardsLogo from '../../assets/TaskCards Logo.jpg';
+import Login from '../Login/Login';
 
 const Navbar = ({ isAuthenticated }) => {
   return (

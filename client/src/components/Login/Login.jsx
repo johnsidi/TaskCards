@@ -6,6 +6,7 @@ import { useNavigate, useLocation } from 'react-router-dom';
 const initialState = {
   email: '',
   password: '',
+  username: '',
 };
 
 const Login = (props) => {
@@ -21,8 +22,6 @@ const Login = (props) => {
   const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
-    // Check the session branch to see how to handle redirects
-    // REMOVE-START
     e.preventDefault();
     const { email, password } = state;
     const user = { email, password };
@@ -32,7 +31,10 @@ const Login = (props) => {
       alert(`${res.message}`);
       setState(initialState);
     } else {
-      const { accessToken, userID } = res;
+      console.log('res', res);
+
+      const { accessToken, userID, theusername } = res;
+      console.log('username', theusername);
       localStorage.setItem('accessToken', accessToken);
       localStorage.setItem('userID', userID);
       props.setIsAuthenticated(true);

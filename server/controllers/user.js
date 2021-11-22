@@ -33,10 +33,11 @@ exports.login = async (req, res) => {
   try {
     const user = await User.findOne({ email: email });
     const userID = user.id;
+    const theusername = user.username;
     const validatedPass = await bcrypt.compare(password, user.password);
     if (!validatedPass) throw new Error();
     const accessToken = jwt.sign({ _id: userID }, SECRET_KEY);
-    res.status(200).send({ accessToken, userID });
+    res.status(200).send({ accessToken, userID, theusername });
   } catch (error) {
     res
       .status(401)
