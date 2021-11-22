@@ -16,14 +16,22 @@ import searchIcon from './assets/search.svg';
 import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
-  const [searchString, setSearchString] = useState('');
+  //const [searchString, setSearchString] = useState('');
   const initialState = auth.isAuthenticated();
   const [isAuthenticated, setIsAuthenticated] = useState(initialState);
+  const [searchString, setSearchString] = useState('');
 
   return (
     <div className='App'>
-      <Navbar isAuthenticated={isAuthenticated} />
-      <Dashboard setIsAuthenticated={setIsAuthenticated} />
+      <Navbar
+        isAuthenticated={isAuthenticated}
+        setSearchString={setSearchString}
+      />
+
+      <Dashboard
+        setIsAuthenticated={setIsAuthenticated}
+        searchString={searchString}
+      />
       {/* <header>
         <div className='appName'>TaskCards</div>
         <div className='navbar_search'>

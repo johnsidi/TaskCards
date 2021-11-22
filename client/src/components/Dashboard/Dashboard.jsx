@@ -7,7 +7,7 @@ import Logout from '../Logout/Logout';
 import Welcome from '../Welcome/Welcome';
 import Home from '../Home/Home';
 
-const Dashboard = ({ setIsAuthenticated }) => {
+const Dashboard = ({ setIsAuthenticated, searchString }) => {
   return (
     <div className='Dashboard'>
       <Routes>
@@ -24,8 +24,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
           path='/logout'
           element={<Logout setIsAuthenticated={setIsAuthenticated} />}
         />
-        <Route path='/tasks' element={<Home />} />
-        <Route path='/home' element={<Home />} />
+        <Route path='/tasks' element={<Home searchString={searchString} />} />
+        <Route path='/home' element={<Home searchString={searchString} />} />
         {/* <Route path='*' element={<Welcome />} /> */}
         <Route
           path='*'
