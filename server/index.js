@@ -16,8 +16,13 @@ const localPort = 3000;
 //   // REMOVE-END
 // };
 
-// app.use(cors(corsConfig));
-app.use(cors());
+const corsConfig = {
+  origin: true,
+  credentials: true,
+};
+
+app.use(cors(corsConfig));
+//app.use(cors());
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(router);

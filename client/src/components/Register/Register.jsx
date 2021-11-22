@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import auth from '../../utils/auth';
 import apiServiceJWT from '../../ApiServiceJWT';
+import { useNavigate } from 'react-router-dom';
 
 const initialState = {
   email: '',
@@ -20,6 +21,8 @@ const Register = (props) => {
     }));
   };
 
+  const navigate = useNavigate();
+
   const handleSubmit = async (e) => {
     // Check the client-session to see how to handle redirects
     // REMOVE-START
@@ -35,7 +38,7 @@ const Register = (props) => {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
       props.setIsAuthenticated(true);
-      auth.login(() => props.history.push('/profile'));
+      navigate('/profile');
     }
     // REMOVE-END
   };
