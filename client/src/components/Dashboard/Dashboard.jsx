@@ -26,8 +26,8 @@ const Dashboard = ({ setIsAuthenticated }) => {
         />
         <Route path='/tasks' element={<Home />} />
         <Route path='/home' element={<Home />} />
-        <Route path='/' element={<Welcome />} />
         <Route path='*' element={<Welcome />} />
+        <Route path='/' element={<Welcome />} />
       </Routes>
     </div>
   );

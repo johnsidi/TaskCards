@@ -38,7 +38,7 @@ const Register = (props) => {
       const { accessToken } = res;
       localStorage.setItem('accessToken', accessToken);
       props.setIsAuthenticated(true);
-      navigate('/profile');
+      navigate('/home');
     }
     // REMOVE-END
   };
