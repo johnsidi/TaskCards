@@ -40,7 +40,7 @@ const Register = (props) => {
       props.setIsAuthenticated(true);
       navigate('/home');
     }
-    // REMOVE-END
+    // REMOVE-END◊
   };
 
   const validateForm = () => {
