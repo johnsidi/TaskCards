@@ -54,7 +54,6 @@ exports.deleteTask = async (req, res) => {
 };
 
 exports.updateTask = async (req, res) => {
-  3;
   const { id } = req.params;
 
   const inputReq = req.body;

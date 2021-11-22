@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 
-import ApiService from '../../ApiService';
+//import ApiService from '../../ApiService';
 import apiServiceJWT from '../../ApiServiceJWT';
 
 import TaskForm from '../TaskForm/TaskForm';
@@ -76,13 +76,13 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
       return task;
     });
 
-    await ApiService.updateTask(id, completedTask);
+    await apiServiceJWT.updateTask(accessToken, id, completedTask);
     setTasks(withCreatedTasks);
     setTasksCopy(withCreatedTasks);
   };
 
   const editHandler = async (id, editedTask) => {
-    const task = await ApiService.updateTask(id, editedTask);
+    await apiServiceJWT.updateTask(accessToken, id, editedTask);
 
     const withEditedTasks = tasks.map((task) => {
       if (id === task._id) {
@@ -104,9 +104,9 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
   };
   const propertyFilterHandler = (filterName) => {
     //console.log('tasksCopy', tasksCopy);
-    console.log('filterName', filterName);
+    //console.log('filterName', filterName);
     const propertyFilteredTasks = tasksCopy.filter(filterName);
-    console.log('propertyFilteredTasks', propertyFilteredTasks);
+    //console.log('propertyFilteredTasks', propertyFilteredTasks);
     setTasks(propertyFilteredTasks);
   };
 

@@ -1,8 +1,8 @@
-//const BASE_URL = 'http://localhost:3000'; //for the backend
+//for local development
+const BASE_URL = 'http://localhost:3000'; //for the backend
 
 //for deployment
-//const BASE_URL = 'https://taskcardscors.herokuapp.com/taskcards.herokuapp.com';
-const BASE_URL = 'https://taskcards.herokuapp.com';
+//const BASE_URL = 'https://taskcards.herokuapp.com';
 
 const apiServiceJWT = {};
 
@@ -56,6 +56,25 @@ apiServiceJWT.deleteTask = async (accessToken, userID, id) => {
       },
     });
     return res;
+  } catch (error) {
+    console.log('Error', error); // eslint-disable-line no-console
+    return null;
+  }
+};
+
+apiServiceJWT.updateTask = async (accessToken, id, updatedTask) => {
+  try {
+    const res = await fetch(`${BASE_URL}/tasks/${id}`, {
+      method: 'PUT',
+      mode: 'cors',
+      credentials: 'include',
+      body: JSON.stringify(updatedTask),
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${accessToken}`,
+      },
+    });
+    return res.json();
   } catch (error) {
     console.log('Error', error); // eslint-disable-line no-console
     return null;
