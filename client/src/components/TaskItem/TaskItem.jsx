@@ -73,7 +73,7 @@ function TaskItem({
         ) : (
           ''
         )}
-        {task.completionDates ? (
+        {task.completionDates[0] ? (
           <p>
             <b>Completed:</b>{' '}
             {task.completionDates.map(
