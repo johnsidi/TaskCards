@@ -1,13 +1,21 @@
 import React from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Routes, Route } from 'react-router-dom';
 import Register from '../Register/Register';
 import Login from '../Login/Login';
 import Profile from '../Profile/Profile';
 import Logout from '../Logout/Logout';
 import Welcome from '../Welcome/Welcome';
 import Home from '../Home/Home';
+import TaskPage from '../TaskPage/TaskPage';
 
-const Dashboard = ({ setIsAuthenticated, searchString }) => {
+const Dashboard = ({
+  setIsAuthenticated,
+  searchString,
+  tasks,
+  setTasks,
+  tasksCopy,
+  setTasksCopy,
+}) => {
   return (
     <div className='Dashboard'>
       <Routes>
@@ -25,7 +33,20 @@ const Dashboard = ({ setIsAuthenticated, searchString }) => {
           element={<Logout setIsAuthenticated={setIsAuthenticated} />}
         />
         <Route path='/tasks' element={<Home searchString={searchString} />} />
-        <Route path='/home' element={<Home searchString={searchString} />} />
+        <Route
+          path='/home'
+          element={
+            <Home
+              tasks={tasks}
+              setTasks={setTasks}
+              tasksCopy={tasksCopy}
+              setTasksCopy={setTasksCopy}
+              searchString={searchString}
+            />
+          }
+        >
+          <Route path=':ticketID' element={<TaskPage tasks={tasks} />} />
+        </Route>
         {/* <Route path='*' element={<Welcome />} /> */}
         <Route
           path='*'

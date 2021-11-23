@@ -2,7 +2,7 @@ import './App.css';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import auth from './utils/auth';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 
 import Register from './components/Register/Register';
@@ -12,6 +12,7 @@ import Logout from './components/Logout/Logout';
 import Home from './components/Home/Home';
 
 import searchIcon from './assets/search.svg';
+import apiServiceJWT from '../src/ApiServiceJWT';
 
 import Dashboard from './components/Dashboard/Dashboard';
 
@@ -20,6 +21,27 @@ function App() {
   const initialState = auth.isAuthenticated();
   const [isAuthenticated, setIsAuthenticated] = useState(initialState);
   const [searchString, setSearchString] = useState('');
+  const [tasks, setTasks] = useState([]);
+  const [tasksCopy, setTasksCopy] = useState([]);
+
+  const accessToken = localStorage.getItem('accessToken');
+  const userID = localStorage.getItem('userID');
+
+  async function fetchTasks() {
+    console.log('userID from fetchTasks', userID);
+    const tasksList = await apiServiceJWT.getTasks(accessToken, userID);
+    console.log('TaskList', tasksList);
+    setTasks(tasksList);
+    //I need this list in order to be able to go to
+    //the initial state before filtering
+    //I think it is better to have then on memory
+    //than doing an API call
+    setTasksCopy(tasksList);
+  }
+
+  useEffect(() => {
+    fetchTasks();
+  }, []);
 
   return (
     <div className='App'>
@@ -31,31 +53,11 @@ function App() {
       <Dashboard
         setIsAuthenticated={setIsAuthenticated}
         searchString={searchString}
+        tasks={tasks}
+        setTasks={setTasks}
+        tasksCopy={tasksCopy}
+        setTasksCopy={setTasksCopy}
       />
-      {/* <header>
-        <div className='appName'>TaskCards</div>
-        <div className='navbar_search'>
-          <img
-            className='navbar_search_icon'
-            width='30'
-            height='30'
-            src={searchIcon}
-            alt='search icon'
-          />
-          <input
-            className='search'
-            onChange={(e) => setSearchString(e.target.value)}
-            type='text'
-            placeholder='Search...'
-            accessKey='f'
-            title='ctrl + alt + f'
-          ></input>
-        </div>
-      </header>
-      <Home searchString={searchString} />
-      <footer>
-        John Sidiropoulos <br /> <br /> Solo project for Codeworks - August 2021
-      </footer> */}
     </div>
   );
 }

@@ -1,21 +1,32 @@
-import './TaskItem.css';
+import { useParams } from 'react-router-dom';
+
+import './TaskPage.css';
 import moment from 'moment';
 import React from 'react';
 import ModalEditForm from '../../components/ModalEditForm/ModalEditForm';
 import useModal from '../../useModal';
 import { Link } from 'react-router-dom';
 
-function TaskItem({
-  task,
+function TaskPage({
+  tasks,
   taskIndex,
   deleteHandler,
   editHandler,
   completeTaskHandler,
 }) {
   const { toggleModal, visible } = useModal();
+  let params = useParams();
+  let taskTicket = params.ticketID;
+  console.log('taskTicket', taskTicket);
+  console.log('tasks', tasks);
+  // console.log('atask.ticket', tasks[0].ticket);
+  let task = tasks.filter((atask) => atask.ticket == taskTicket)[0];
+  console.log('task1', task);
   return (
     <div className='taskContent'>
-      <input
+      <h2>Task ticket: {params.ticketID}</h2>
+
+      {/* <input
         type='checkbox'
         checked={task.completed === true ? 'checked' : ''}
         id={task._id}
@@ -25,16 +36,12 @@ function TaskItem({
         }}
         className='doneCheckbox'
       ></input>
-      <span class='checkmark'></span>
+      <span class='checkmark'></span> */}
       <div className='title'>
-        <h3 id={task._id}>
-          <Link to={`/home/${task.ticket}`} key={task.ticket}>
-            {task.ticket}
-          </Link>
-          {' - ' + task.title}
-        </h3>
-
-        {/* {task.notes ? (
+        <h3 id={task._id}>{task.ticket + ' - ' + task.title}</h3>
+      </div>
+      <div>
+        {task.notes ? (
           <p>
             <b>Notes:</b> {task.notes}
           </p>
@@ -89,9 +96,9 @@ function TaskItem({
           </p>
         ) : (
           ''
-        )} */}
+        )}
       </div>
-      <div className='taskDelete'>
+      {/* <div className='taskDelete'>
         <button
           onClick={() => deleteHandler(task._id)}
           className='deleteButton'
@@ -151,9 +158,9 @@ function TaskItem({
         </svg>
         <input type='checkbox' id={task._id} className='printCheckbox'></input>
         <span className='checkmark'></span>
-      </label>
+      </label> */}
     </div>
   );
 }
 
-export default TaskItem;
+export default TaskPage;

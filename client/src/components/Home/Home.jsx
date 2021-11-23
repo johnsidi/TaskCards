@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { Routes, Route, Outlet } from 'react-router-dom';
 
 //import ApiService from '../../ApiService';
 import apiServiceJWT from '../../ApiServiceJWT';
@@ -7,31 +8,23 @@ import TaskForm from '../TaskForm/TaskForm';
 import TaskList from '../TaskList/TaskList.jsx';
 import CreateIndexCard from '../CreateIndexCard/CreateIndexCard.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
+import TaskPage from '../TaskPage/TaskPage';
 
 import './Home.css';
 
-function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
-  const [tasks, setTasks] = useState([]);
+function Home({
+  tasks,
+  setTasks,
+  tasksCopy,
+  setTasksCopy,
+  searchString,
+  savedSearchHandler,
+  setIsAuthenticated,
+}) {
   const [cardSize, setCardSize] = useState('360 123');
   const [searchFilteredTasks, setSearchFilteredTasks] = useState([]);
-  const [tasksCopy, setTasksCopy] = useState([]);
   const accessToken = localStorage.getItem('accessToken');
   const userID = localStorage.getItem('userID');
-  async function fetchTasks() {
-    console.log('userID from fetchTasks', userID);
-    const tasksList = await apiServiceJWT.getTasks(accessToken, userID);
-    console.log('TaskList', tasksList);
-    setTasks(tasksList);
-    //I need this list in order to be able to go to
-    //the initial state before filtering
-    //I think it is better to have then on memory
-    //than doing an API call
-    setTasksCopy(tasksList);
-  }
-
-  useEffect(() => {
-    fetchTasks();
-  }, []);
 
   const createHandler = async (taskMetadata) => {
     const task = await apiServiceJWT.createTask(
@@ -124,6 +117,11 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
 
   return (
     <div className='home'>
+      {/* <Routes>
+        <Route path='/home' element={<Home searchString={searchString} />}>
+          <Route path=':ticketID' element={<TaskPage />} />
+        </Route>
+      </Routes> */}
       <Sidebar
         tasks={tasks}
         propertyFilterHandler={propertyFilterHandler}
@@ -136,7 +134,6 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
             ? searchFilteredTasks.length
             : tasks.length}
         </div>
-
         <TaskList
           id='list'
           tasks={tasks.length && searchString ? searchFilteredTasks : tasks}
@@ -145,6 +142,7 @@ function Home({ searchString, savedSearchHandler, setIsAuthenticated }) {
           completeTaskHandler={completeTaskHandler}
         />
       </div>
+      <Outlet />
       <div className='form'>
         <div className='indexCard'>
           {tasks.length ? (
