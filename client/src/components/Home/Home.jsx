@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Routes, Route, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 //import ApiService from '../../ApiService';
 import apiServiceJWT from '../../ApiServiceJWT';
@@ -8,7 +8,6 @@ import TaskForm from '../TaskForm/TaskForm';
 import TaskList from '../TaskList/TaskList.jsx';
 import CreateIndexCard from '../CreateIndexCard/CreateIndexCard.jsx';
 import Sidebar from '../Sidebar/Sidebar.jsx';
-import TaskPage from '../TaskPage/TaskPage';
 
 import './Home.css';
 
@@ -19,7 +18,7 @@ function Home({
   setTasksCopy,
   searchString,
   savedSearchHandler,
-  setIsAuthenticated,
+  editHandler,
 }) {
   const [cardSize, setCardSize] = useState('360 123');
   const [searchFilteredTasks, setSearchFilteredTasks] = useState([]);
@@ -35,13 +34,6 @@ function Home({
     //console.log('after mongoose', task);
     setTasks((prevState) => [...prevState, task]);
     setTasksCopy((prevState) => [...prevState, task]);
-  };
-
-  const deleteHandler = async (id) => {
-    await apiServiceJWT.deleteTask(accessToken, userID, id);
-    // console.log('delete handler id', id);
-    setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
-    setTasksCopy((prevTasks) => prevTasks.filter((task) => task._id !== id));
   };
 
   const completeTaskHandler = async (id, comTask) => {
@@ -74,32 +66,8 @@ function Home({
     setTasksCopy(withCreatedTasks);
   };
 
-  const editHandler = async (id, editedTask) => {
-    await apiServiceJWT.updateTask(accessToken, id, editedTask);
-
-    const withEditedTasks = tasks.map((task) => {
-      if (id === task._id) {
-        return {
-          ...task,
-          title: editedTask.title,
-          notes: editedTask.notes,
-          startDate: editedTask.startDate,
-          dueDate: editedTask.dueDate,
-          category: editedTask.category,
-          repeat: editedTask.repeat,
-          estimatedTime: editedTask.estimatedTime,
-        };
-      }
-      return task;
-    });
-    setTasks(withEditedTasks);
-    setTasksCopy(withEditedTasks);
-  };
   const propertyFilterHandler = (filterName) => {
-    //console.log('tasksCopy', tasksCopy);
-    //console.log('filterName', filterName);
     const propertyFilteredTasks = tasksCopy.filter(filterName);
-    //console.log('propertyFilteredTasks', propertyFilteredTasks);
     setTasks(propertyFilteredTasks);
   };
 
@@ -117,17 +85,14 @@ function Home({
 
   return (
     <div className='home'>
-      {/* <Routes>
-        <Route path='/home' element={<Home searchString={searchString} />}>
-          <Route path=':ticketID' element={<TaskPage />} />
-        </Route>
-      </Routes> */}
       <Sidebar
         tasks={tasks}
         propertyFilterHandler={propertyFilterHandler}
         savedSearchHandler={savedSearchHandler}
       />
       <div className='tasks'>
+        <Outlet />
+
         <div className='totalTasks'>
           Total tasks:{' '}
           {tasks.length && searchString
@@ -137,12 +102,10 @@ function Home({
         <TaskList
           id='list'
           tasks={tasks.length && searchString ? searchFilteredTasks : tasks}
-          editHandler={editHandler}
-          deleteHandler={deleteHandler}
           completeTaskHandler={completeTaskHandler}
         />
       </div>
-      <Outlet />
+
       <div className='form'>
         <div className='indexCard'>
           {tasks.length ? (
@@ -175,5 +138,4 @@ function Home({
     </div>
   );
 }
-
 export default Home;

@@ -6,7 +6,7 @@ import Profile from '../Profile/Profile';
 import Logout from '../Logout/Logout';
 import Welcome from '../Welcome/Welcome';
 import Home from '../Home/Home';
-import TaskPage from '../TaskPage/TaskPage';
+import TaskDetails from '../TaskDetails/TaskDetails';
 
 const Dashboard = ({
   setIsAuthenticated,
@@ -15,6 +15,8 @@ const Dashboard = ({
   setTasks,
   tasksCopy,
   setTasksCopy,
+  editHandler,
+  deleteHandler,
 }) => {
   return (
     <div className='Dashboard'>
@@ -42,21 +44,34 @@ const Dashboard = ({
               tasksCopy={tasksCopy}
               setTasksCopy={setTasksCopy}
               searchString={searchString}
+              editHandler={editHandler}
             />
           }
         >
-          <Route path=':ticketID' element={<TaskPage tasks={tasks} />} />
+          <Route
+            index
+            element={
+              <main style={{ padding: '1rem' }}>
+                <p>
+                  You can click on a task ID link to see more info about the
+                  task.
+                </p>
+              </main>
+            }
+          />
+          <Route
+            path=':ticketID'
+            element={
+              <TaskDetails
+                tasks={tasks}
+                editHandler={editHandler}
+                deleteHandler={deleteHandler}
+              />
+            }
+          />
         </Route>
-        {/* <Route path='*' element={<Welcome />} /> */}
-        <Route
-          path='*'
-          element={
-            <Welcome />
-            // <main style={{ padding: '1rem' }}>
-            //   <p>There's nothing here!</p>
-            // </main>
-          }
-        />
+
+        <Route path='*' element={<Welcome />} />
         <Route path='/' element={<Welcome />} />
       </Routes>
     </div>

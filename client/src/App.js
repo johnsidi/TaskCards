@@ -1,23 +1,18 @@
 import './App.css';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import auth from './utils/auth';
+import { useNavigate } from 'react-router-dom';
 
 import React, { useState, useEffect } from 'react';
 import Navbar from './components/Navbar/Navbar';
 
-import Register from './components/Register/Register';
-import Login from './components/Login/Login';
-import Profile from './components/Profile/Profile';
-import Logout from './components/Logout/Logout';
-import Home from './components/Home/Home';
-
-import searchIcon from './assets/search.svg';
 import apiServiceJWT from '../src/ApiServiceJWT';
 
 import Dashboard from './components/Dashboard/Dashboard';
 
 function App() {
   //const [searchString, setSearchString] = useState('');
+  const navigate = useNavigate();
+
   const initialState = auth.isAuthenticated();
   const [isAuthenticated, setIsAuthenticated] = useState(initialState);
   const [searchString, setSearchString] = useState('');
@@ -43,6 +38,36 @@ function App() {
     fetchTasks();
   }, []);
 
+  const editHandler = async (id, editedTask) => {
+    const task = await apiServiceJWT.updateTask(accessToken, id, editedTask);
+
+    const withEditedTasks = tasks.map((task) => {
+      if (id === task._id) {
+        return {
+          ...task,
+          title: editedTask.title,
+          notes: editedTask.notes,
+          startDate: editedTask.startDate,
+          dueDate: editedTask.dueDate,
+          category: editedTask.category,
+          repeat: editedTask.repeat,
+          estimatedTime: editedTask.estimatedTime,
+        };
+      }
+      return task;
+    });
+    setTasks(withEditedTasks);
+    setTasksCopy(withEditedTasks);
+  };
+  const deleteHandler = async (id) => {
+    navigate('/home');
+
+    await apiServiceJWT.deleteTask(accessToken, userID, id);
+    // console.log('delete handler id', id);
+    setTasks((prevTasks) => prevTasks.filter((task) => task._id !== id));
+    setTasksCopy((prevTasks) => prevTasks.filter((task) => task._id !== id));
+  };
+
   return (
     <div className='App'>
       <Navbar
@@ -57,9 +82,10 @@ function App() {
         setTasks={setTasks}
         tasksCopy={tasksCopy}
         setTasksCopy={setTasksCopy}
+        editHandler={editHandler}
+        deleteHandler={deleteHandler}
       />
     </div>
   );
 }
-
 export default App;
