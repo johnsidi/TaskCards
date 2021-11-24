@@ -119,6 +119,7 @@ function CreateIndexCard({ tasks, cardSize }) {
         fontStyle: 'normal',
         marginLeft: 30,
         marginRight: 60,
+        marginDown: 50,
         //for  Tcards 4+
         marginTop: 0,
         //for normal index cards
