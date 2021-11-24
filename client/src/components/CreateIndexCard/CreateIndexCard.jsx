@@ -87,7 +87,7 @@ function CreateIndexCard({ tasks, cardSize }) {
         marginLeft: 10,
         marginRight: -10,
         marginTop: 10,
-        marginDown: 50,
+        marginDown: 100,
         color: 'black',
       },
       label: {
