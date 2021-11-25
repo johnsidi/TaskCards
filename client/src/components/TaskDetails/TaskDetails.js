@@ -21,7 +21,7 @@ function TaskDetails({ tasks, deleteHandler, editHandler }) {
       <div>
         {task.notes ? (
           <p>
-            <b>Notes:</b> {task.notes}
+            <b>Notes - Next Actions:</b> {task.notes}
           </p>
         ) : (
           ''

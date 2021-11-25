@@ -47,7 +47,7 @@ function TaskForm({ createHandler }) {
           title='ctrl + alt + n'
         />
         <br />
-        <label>Notes</label>
+        <label>Notes - Next Actions</label>
         <textarea
           onChange={(e) => {
             setTask({ ...task, notes: e.target.value });
