@@ -1,5 +1,4 @@
 const jwt = require('jsonwebtoken');
-console.log(jwt);
 const { User } = require('./../models/taskMod');
 const SECRET_KEY = process.env.SECRET_KEY || 'lalala this isnt secure';
 
@@ -13,8 +12,6 @@ const authMiddleware = async (req, res, next) => {
 
     const { _id } = jwt.verify(token, SECRET_KEY);
 
-    // attempt to find user object and set to req
-    console.log('hi from middleware');
     const user = await User.findOne({ _id });
     if (!user) return res.sendStatus(401);
     req.user = user;

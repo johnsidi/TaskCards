@@ -1,73 +1,92 @@
 import { useParams } from 'react-router-dom';
 import './TaskDetails.css';
 import moment from 'moment';
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import ModalEditForm from '../ModalEditForm/ModalEditForm';
 import useModal from '../../useModal';
 
 function TaskDetails({ tasks, deleteHandler, editHandler }) {
   const { toggleModal, visible } = useModal();
+
   let params = useParams();
   let taskTicket = params.ticketID;
-  let task = tasks.filter((atask) => atask.ticket == taskTicket)[0];
-  console.log('task1', task);
+  let currentDetailedTask = tasks.filter(
+    (atask) => atask.ticket == taskTicket
+  )[0];
+
+  const [detailedtask, setDetailedTask] = useState({
+    title: currentDetailedTask.title,
+    notes: currentDetailedTask.notes,
+    startDate: currentDetailedTask.startDate,
+    dueDate: currentDetailedTask.dueDate,
+    completionDates: currentDetailedTask.completionDates,
+    category: currentDetailedTask.category,
+    repeat: currentDetailedTask.repeat,
+    estimatedTime: currentDetailedTask.estimatedTime,
+  });
+
+  useEffect(() => {
+    setDetailedTask(currentDetailedTask);
+  }, [currentDetailedTask]);
+
   return (
     <div className='taskContent'>
       <h2>Task {params.ticketID} Details:</h2>
 
       <div className='title'>
-        <h3 id={task._id}>{task.title}</h3>
+        <h3 id={detailedtask._id}>{detailedtask.title}</h3>
       </div>
       <div>
-        {task.notes ? (
+        {detailedtask.notes ? (
           <p>
-            <b>Notes - Next Actions:</b> {task.notes}
+            <b>Notes - Next Actions:</b> {detailedtask.notes}
           </p>
         ) : (
           ''
         )}
-        {task.category ? (
+        {detailedtask.category ? (
           <p>
-            <b>Tags:</b> {task.category}
+            <b>Tags:</b> {detailedtask.category}
           </p>
         ) : (
           ''
         )}
         <p>
-          <b>Creation date:</b> {moment(task.createdAt).format('YYYY-MM-DD')}
+          <b>Creation date:</b>{' '}
+          {moment(detailedtask.createdAt).format('YYYY-MM-DD')}
         </p>
-        {task.repeat ? (
+        {detailedtask.repeat ? (
           <p>
-            <b>Repeat:</b> {task.repeat}
+            <b>Repeat:</b> {detailedtask.repeat}
           </p>
         ) : (
           ''
         )}
-        {task.dueDate ? (
+        {detailedtask.dueDate ? (
           <p>
-            <b>Due date:</b> {task.dueDate}
+            <b>Due date:</b> {detailedtask.dueDate}
           </p>
         ) : (
           ''
         )}
-        {task.startDate ? (
+        {detailedtask.startDate ? (
           <p>
-            <b>Start date:</b> {task.startDate}
+            <b>Start date:</b> {detailedtask.startDate}
           </p>
         ) : (
           ''
         )}
-        {task.estimatedTime ? (
+        {detailedtask.estimatedTime ? (
           <p>
-            <b>Estimated time:</b> {task.estimatedTime}
+            <b>Estimated time:</b> {detailedtask.estimatedTime}
           </p>
         ) : (
           ''
         )}
-        {task.completionDates[0] ? (
+        {detailedtask.completionDates[0] ? (
           <p>
             <b>Completed:</b>{' '}
-            {task.completionDates.map(
+            {detailedtask.completionDates.map(
               (completionDate) =>
                 moment(new Date(completionDate)).format('YYYY-MM-DD') + ' / '
             )}
@@ -78,7 +97,7 @@ function TaskDetails({ tasks, deleteHandler, editHandler }) {
       </div>
       <div className='taskDelete'>
         <button
-          onClick={() => deleteHandler(task._id)}
+          onClick={() => deleteHandler(detailedtask._id)}
           className='deleteButton'
         >
           <svg
@@ -116,7 +135,8 @@ function TaskDetails({ tasks, deleteHandler, editHandler }) {
           </svg>
         </button>
         <ModalEditForm
-          task={task}
+          detailedtask={detailedtask}
+          setDetailedTask={setDetailedTask}
           visible={visible}
           editHandler={editHandler}
           toggleModal={toggleModal}

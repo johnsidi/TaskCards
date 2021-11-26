@@ -40,6 +40,7 @@ function App() {
 
   const editHandler = async (id, editedTask) => {
     const task = await apiServiceJWT.updateTask(accessToken, id, editedTask);
+    console.log('editedTask from edit handler', editedTask);
 
     const withEditedTasks = tasks.map((task) => {
       if (id === task._id) {

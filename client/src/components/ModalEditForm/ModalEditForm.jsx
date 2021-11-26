@@ -1,31 +1,17 @@
-import React, { useState } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 
-function ModalEditForm({ task, editHandler, visible, toggleModal }) {
-  const [editedTask, setEditedTask] = useState({
-    title: task.title,
-    notes: task.notes,
-    startDate: task.startDate,
-    dueDate: task.dueDate,
-    completionDates: task.completionDates,
-    category: task.category,
-    repeat: task.repeat,
-    estimatedTime: task.estimatedTime,
-  });
-
+function ModalEditForm({
+  detailedtask,
+  setDetailedTask,
+  editHandler,
+  visible,
+  toggleModal,
+}) {
   const submitHandler = async (e) => {
     e.preventDefault();
     toggleModal();
-    await editHandler(task._id, editedTask);
-    setEditedTask({
-      title: editedTask.title,
-      notes: editedTask.notes,
-      startDate: editedTask.startDate,
-      dueDate: editedTask.dueDate,
-      category: editedTask.category,
-      repeat: editedTask.repeat,
-      estimatedTime: editedTask.estimatedTime,
-    });
+    await editHandler(detailedtask._id, detailedtask);
   };
 
   return visible
@@ -38,9 +24,9 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <textarea
                 required
                 onChange={(e) => {
-                  setEditedTask({ ...editedTask, title: e.target.value });
+                  setDetailedTask({ ...detailedtask, title: e.target.value });
                 }}
-                value={editedTask.title}
+                value={detailedtask.title}
                 cols='40'
                 rows='3'
                 accessKey='d'
@@ -50,9 +36,9 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <label>notes</label>
               <textarea
                 onChange={(e) => {
-                  setEditedTask({ ...editedTask, notes: e.target.value });
+                  setDetailedTask({ ...detailedtask, notes: e.target.value });
                 }}
-                value={editedTask.notes}
+                value={detailedtask.notes}
                 cols='40'
                 rows='3'
               />
@@ -61,12 +47,12 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <input
                 className='input-form'
                 onChange={(e) => {
-                  setEditedTask({
-                    ...editedTask,
+                  setDetailedTask({
+                    ...detailedtask,
                     category: e.target.value,
                   });
                 }}
-                value={editedTask.category}
+                value={detailedtask.category}
                 type='text'
               />
               <br />
@@ -74,9 +60,9 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <select
                 className='input-form'
                 onChange={(e) => {
-                  setEditedTask({ ...editedTask, repeat: e.target.value });
+                  setDetailedTask({ ...detailedtask, repeat: e.target.value });
                 }}
-                value={editedTask.repeat}
+                value={detailedtask.repeat}
                 type='text'
               >
                 <option value=''>--Please choose an option--</option>
@@ -93,9 +79,12 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <input
                 className='input-form'
                 onChange={(e) => {
-                  setEditedTask({ ...editedTask, startDate: e.target.value });
+                  setDetailedTask({
+                    ...detailedtask,
+                    startDate: e.target.value,
+                  });
                 }}
-                value={editedTask.startDate}
+                value={detailedtask.startDate}
                 type='date'
               />
               <br />
@@ -104,9 +93,9 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <input
                 className='input-form'
                 onChange={(e) => {
-                  setEditedTask({ ...editedTask, dueDate: e.target.value });
+                  setDetailedTask({ ...detailedtask, dueDate: e.target.value });
                 }}
-                value={editedTask.dueDate}
+                value={detailedtask.dueDate}
                 type='date'
               />
               <br />
@@ -114,12 +103,12 @@ function ModalEditForm({ task, editHandler, visible, toggleModal }) {
               <input
                 className='input-form'
                 onChange={(e) => {
-                  setEditedTask({
-                    ...editedTask,
+                  setDetailedTask({
+                    ...detailedtask,
                     estimatedTime: e.target.value,
                   });
                 }}
-                value={editedTask.estimatedTime}
+                value={detailedtask.estimatedTime}
                 type='text'
               />
               <br />
